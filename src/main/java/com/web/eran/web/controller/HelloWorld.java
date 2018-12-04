@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 * @description 测试action
 */
 @Controller
-@RequestMapping("start")
 public class HelloWorld {
 	
 	private final Logger log=LoggerFactory.getLogger(HelloWorld.class);
@@ -23,5 +22,15 @@ public class HelloWorld {
 		log.info("log test!");
 		log.info("开启热部署！");
 		return "Hello World!";
+	}
+	
+	@RequestMapping("/index")
+	public String index() {
+		return "index";
+	}
+	
+	@RequestMapping("/")
+	public String start() {
+		return "login";
 	}
 }
