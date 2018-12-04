@@ -8,7 +8,5 @@ public class EranApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(EranApplication.class, args);
-		System.out.println("d");
-		System.out.println("c");
 	}
 }
