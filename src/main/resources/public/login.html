@@ -3,16 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <title>Login page</title>
-<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
 <link href="css/login.css" rel="stylesheet" type="text/css">
 </head>
-<body>
-	
-	
-	<script src="https://unpkg.com/vue/dist/vue.js"></script>
-	<script src="https://unpkg.com/element-ui/lib/index.js"></script>
-	<script type="text/javascript">
-		
-	</script>
+<body>	
+	<h1>This is Login page!</h1>
+	错误信息：<h4 th:text="${msg}"></h4>
+	<form action="" method="post">
+		<p>
+			<label>用户名：</label>
+			<input type="text" name="username" id="username" />
+		</p>
+		<p>
+			<label>密码：</label>
+			<input type="password" name="password" id="password" />
+		</p>
+		<p>
+			<input type="submit" value="LOGIN" />
+		</p>
+	</form>
 </body>
 </html>

@@ -29,6 +29,10 @@ public class HelloWorld {
 		return "index";
 	}
 	
+	/**
+	 * 访问根目录跳转到登陆页面
+	 * @return
+	 */
 	@RequestMapping("/")
 	public String start() {
 		return "login";

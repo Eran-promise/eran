@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.web.eran.dao.SysPermissionMapper">
+	    <resultMap id="sysPermission" type="com.web.eran.entity.SysPermission">
+                  <result column="id" property="id" />
+ 		          <result column="name" property="name" />
+ 		          <result column="type" property="type" />
+ 		          <result column="url" property="url" />
+ 		          <result column="percode" property="percode" />
+ 		          <result column="parentid" property="parentid" />
+ 		          <result column="parentids" property="parentids" />
+ 		          <result column="sortstring" property="sortstring" />
+ 		          <result column="available" property="available" />
+ 		</resultMap>
+
+    
+    	
+	<insert id="insert" parameterType="com.web.eran.entity.SysPermission" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO sys_permission (  						
+							name ,						
+							type ,						
+							url ,						
+							percode ,						
+							parentid ,						
+							parentids ,						
+							sortstring ,						
+							available 						
+		) VALUES ( 						
+							#{name,jdbcType=VARCHAR},						
+							#{type,jdbcType=VARCHAR},						
+							#{url,jdbcType=VARCHAR},						
+							#{percode,jdbcType=VARCHAR},						
+							#{parentid,jdbcType=BIGINT},						
+							#{parentids,jdbcType=VARCHAR},						
+							#{sortstring,jdbcType=VARCHAR},						
+							#{available,jdbcType=VARCHAR}						
+		)
+	</insert>
+	
+	<update id="update" parameterType="com.web.eran.entity.SysPermission">
+		UPDATE sys_permission	
+	<trim prefix="set" suffixOverrides="," >  
+	 				 <if test="id != null">id=#{id},</if>
+				 				 <if test="name != null">name=#{name},</if>
+				 				 <if test="type != null">type=#{type},</if>
+				 				 <if test="url != null">url=#{url},</if>
+				 				 <if test="percode != null">percode=#{percode},</if>
+				 				 <if test="parentid != null">parentid=#{parentid},</if>
+				 				 <if test="parentids != null">parentids=#{parentids},</if>
+				 				 <if test="sortstring != null">sortstring=#{sortstring},</if>
+								 <if test="available != null">available=#{available}</if>
+		 	</trim> 
+		WHERE 			id=#{id}           
+	</update>
+	
+	<delete id="deleteByPrimaryKey" parameterType="Long">
+        DELETE FROM sys_permission	 WHERE 			id=#{id}      </delete>
+	
+	<delete id="deleteBySelective" parameterType="com.web.eran.entity.SysPermission">
+        DELETE FROM sys_permission	 
+         <where>   
+		       <if test="id != null">id = #{id}</if>  
+        		       <if test="name != null">and name = #{name}</if> 
+	    		       <if test="type != null">and type = #{type}</if> 
+	    		       <if test="url != null">and url = #{url}</if> 
+	    		       <if test="percode != null">and percode = #{percode}</if> 
+	    		       <if test="parentid != null">and parentid = #{parentid}</if> 
+	    		       <if test="parentids != null">and parentids = #{parentids}</if> 
+	    		       <if test="sortstring != null">and sortstring = #{sortstring}</if> 
+	    		       <if test="available != null">and available = #{available}</if> 
+	    	</where>
+    </delete>
+    
+	<select id="findById" parameterType="java.lang.Long" resultMap="sysPermission">
+		SELECT 
+			id as "id" ,			
+			name as "name" ,			
+			type as "type" ,			
+			url as "url" ,			
+			percode as "percode" ,			
+			parentid as "parentid" ,			
+			parentids as "parentids" ,			
+			sortstring as "sortstring" ,			
+			available as "available" 			
+		FROM sys_permission
+		WHERE
+			id=#{id} 	</select>
+	
+<select id="findBySelective" parameterType="com.web.eran.entity.SysPermission" resultMap="sysPermission">
+	SELECT
+			 id as "id" ,			
+			 name as "name" ,			
+			 type as "type" ,			
+			 url as "url" ,			
+			 percode as "percode" ,			
+			 parentid as "parentid" ,			
+			 parentids as "parentids" ,			
+			 sortstring as "sortstring" ,			
+			 available as "available" 			
+	FROM  sys_permission  
+	      <where> 
+		       <if test="id != null">id = #{id}</if>  
+        		       <if test="name != null">and name = #{name}</if> 
+	    		       <if test="type != null">and type = #{type}</if> 
+	    		       <if test="url != null">and url = #{url}</if> 
+	    		       <if test="percode != null">and percode = #{percode}</if> 
+	    		       <if test="parentid != null">and parentid = #{parentid}</if> 
+	    		       <if test="parentids != null">and parentids = #{parentids}</if> 
+	    		       <if test="sortstring != null">and sortstring = #{sortstring}</if> 
+	    		       <if test="available != null">and available = #{available}</if> 
+	    		</where>
+	order by id desc
+	<if test="startIndex!=null and maxResults!=null">
+			limit #{ startIndex }, #{ maxResults }
+		</if>
+	</select>
+
+	<select id="findBySelectiveCount"  resultType="java.lang.Integer">
+		SELECT count(1) 
+		FROM sys_permission 
+		 <where> 
+		       <if test="id != null">id = #{id}</if>  
+        		       <if test="name != null">and name = #{name}</if> 
+	    		       <if test="type != null">and type = #{type}</if> 
+	    		       <if test="url != null">and url = #{url}</if> 
+	    		       <if test="percode != null">and percode = #{percode}</if> 
+	    		       <if test="parentid != null">and parentid = #{parentid}</if> 
+	    		       <if test="parentids != null">and parentids = #{parentids}</if> 
+	    		       <if test="sortstring != null">and sortstring = #{sortstring}</if> 
+	    		       <if test="available != null">and available = #{available}</if> 
+	    		</where>
+	</select>
+</mapper>
