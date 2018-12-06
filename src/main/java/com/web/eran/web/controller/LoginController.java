@@ -46,12 +46,12 @@ public class LoginController {
         }
         map.put("msg", msg);
         // 此方法不处理登录成功,由shiro进行处理
-        return "/login";
+        return "login";
 	}
 	
 	@RequestMapping("/403")
     public String unauthorizedRole(){
         log.info("------没有权限-------");
-        return "403";
+        return "common/403";
     }
 }

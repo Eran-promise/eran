@@ -26,15 +26,13 @@ public class HelloWorld {
 	
 	@RequestMapping("/index")
 	public String index() {
+		log.info("get in index.do");
 		return "index";
 	}
 	
-	/**
-	 * 访问根目录跳转到登陆页面
-	 * @return
-	 */
-	@RequestMapping("/")
-	public String start() {
-		return "login";
-	}
+	/*@RequestMapping("/")
+	public String index2() {
+		log.info("get in /.do");
+		return "common/403";
+	}*/
 }

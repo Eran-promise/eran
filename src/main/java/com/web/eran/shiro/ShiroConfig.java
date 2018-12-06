@@ -30,17 +30,16 @@ public class ShiroConfig {
         //拦截器.
         Map<String,String> filterChainDefinitionMap = new LinkedHashMap<String,String>();
         // 配置不会被拦截的链接 顺序判断(静态文件可以匿名访问)
-        filterChainDefinitionMap.put("/static/**", "anon");
+        filterChainDefinitionMap.put("/statics/**", "anon");
         //配置退出 过滤器,其中的具体的退出代码Shiro已经替我们实现了
         filterChainDefinitionMap.put("/logout", "logout");
         //<!-- 过滤链定义，从上向下顺序执行，一般将/**放在最为下边 -->:这是一个坑呢，一不小心代码就不好使了;
         //<!-- authc:所有url都必须认证通过才可以访问; anon:所有url都都可以匿名访问-->
-//        filterChainDefinitionMap.put("/login", "anon");
         filterChainDefinitionMap.put("/**", "authc");
-        // 如果不设置默认会自动寻找Web工程根目录下的"/login.html"页面
+        // 如果不设置默认会自动寻找Web工程根目录下的"/login.jsp"页面
         shiroFilterFactoryBean.setLoginUrl("/login");
-        // 登录成功后要跳转的链接
-        shiroFilterFactoryBean.setSuccessUrl("/index");
+        // 登录成功后要跳转的链接(就算设置了也没用，shiro会先找"/"路径的controller，如果找不到则匹配templates下面的index.html页面)
+//        shiroFilterFactoryBean.setSuccessUrl("/index.do");
 
         //未授权界面;
         shiroFilterFactoryBean.setUnauthorizedUrl("/403");

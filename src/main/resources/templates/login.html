@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Login page</title>
+<link href="/statics/css/login.css" rel="stylesheet" type="text/css">
+</head>
+<body>	
+	<h1>This is Login page!</h1>
+	temp错误信息：<h4 th:text="${msg}"></h4>
+	<form action="" method="post">
+		<p>
+			<label>用户名：</label>
+			<input type="text" name="username" id="username" />
+		</p>
+		<p>
+			<label>密码：</label>
+			<input type="password" name="password" id="password" />
+		</p>
+		<p>
+			<input type="submit" value="LOGIN" />
+		</p>
+	</form>
+</body>
+</html>
