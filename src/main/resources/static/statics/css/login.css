@@ -13,3 +13,16 @@ body{
 	width:100vw;
 	height:100vh;
 }
+.main-msg{
+   width:400px;  
+   height:300px;  
+   position:absolute;  
+   left:50%;  
+   top:50%;  
+   margin:-150px 0 0 -200px ;
+   box-shadow: 10px 10px 5px #888888;
+   background: white;
+}
+.main-msg form{
+	margin: 30px 15px;
+}

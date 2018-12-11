@@ -1,12 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Login page</title>
+<link href="/statics/layui/css/layui.css" rel="stylesheet" type="text/css">
 <link href="/statics/css/login.css" rel="stylesheet" type="text/css">
 </head>
 <body>	
-	<h1>This is Login page!</h1>
+	<div class="main-msg">
+		<form class="layui-form layui-form-pane" action="@{login}" method="post">
+			<div class="layui-form-item">
+				<label class="layui-form-label">用户名</label>
+				<div class="layui-input-block">
+					<input type="text" name="username" id="username" placeholder="Username" lay-verify="required" autocomplete="off" class="layui-input" />
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">密码</label>
+				<div class="layui-input-block">
+					<input type="password" name="password" id="password" placeholder="Password" lay-verify="required" autocomplete="off" class="layui-input" />
+				</div>
+			</div>
+		</form>
+	</div>
+	<!-- <h1>This is Login page!</h1>
 	temp错误信息：<h4 th:text="${msg}"></h4>
 	<form action="" method="post">
 		<p>
@@ -19,7 +36,12 @@
 		</p>
 		<p>
 			<input type="submit" value="LOGIN" />
-		</p>
-	</form>
+		</p> 
+	</form> -->
+	
+	<script src="@{/statics/layui/layui.js}"></script>
+	<script type="text/javascript">
+	
+	</script>
 </body>
 </html>

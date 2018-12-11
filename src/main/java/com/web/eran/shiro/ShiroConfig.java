@@ -39,7 +39,7 @@ public class ShiroConfig {
         // 如果不设置默认会自动寻找Web工程根目录下的"/login.jsp"页面
         shiroFilterFactoryBean.setLoginUrl("/login");
         // 登录成功后要跳转的链接(就算设置了也没用，shiro会先找"/"路径的controller，如果找不到则匹配templates下面的index.html页面)
-//        shiroFilterFactoryBean.setSuccessUrl("/index.do");
+        shiroFilterFactoryBean.setSuccessUrl("/index.do");
 
         //未授权界面;
         shiroFilterFactoryBean.setUnauthorizedUrl("/403");
