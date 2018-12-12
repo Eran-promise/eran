@@ -1,4 +1,4 @@
-package com.web.eran.shiro;
+package com.web.eran.config;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -10,6 +10,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import com.web.eran.shiro.MyShiroRealm;
+
 import org.apache.shiro.mgt.SecurityManager;
 
 /**
@@ -31,6 +34,8 @@ public class ShiroConfig {
         Map<String,String> filterChainDefinitionMap = new LinkedHashMap<String,String>();
         // 配置不会被拦截的链接 顺序判断(静态文件可以匿名访问)
         filterChainDefinitionMap.put("/statics/**", "anon");
+        //生成验证码可以匿名访问
+        filterChainDefinitionMap.put("/kaptcha/**", "anon");
         //配置退出 过滤器,其中的具体的退出代码Shiro已经替我们实现了
         filterChainDefinitionMap.put("/logout", "logout");
         //<!-- 过滤链定义，从上向下顺序执行，一般将/**放在最为下边 -->:这是一个坑呢，一不小心代码就不好使了;

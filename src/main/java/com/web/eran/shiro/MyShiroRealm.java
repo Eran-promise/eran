@@ -1,5 +1,6 @@
 package com.web.eran.shiro;
 
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -7,6 +8,7 @@ import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
+import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
 import org.slf4j.Logger;
@@ -48,6 +50,7 @@ public class MyShiroRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token)
             throws AuthenticationException {
         log.info("get in myRealm!");
+        //验证验证码
         //获取用户的输入的账号.
         String username = (String)token.getPrincipal();
 //        log.info((String)token.getCredentials());
@@ -64,6 +67,9 @@ public class MyShiroRealm extends AuthorizingRealm {
 //                ByteSource.Util.bytes(SysUser.getSalt()),
                 this.getName()  //realm name
         );
+        
+        Session session = SecurityUtils.getSubject().getSession();
+        session.setAttribute("username", username);
         return authenticationInfo;
     }
 

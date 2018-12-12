@@ -24,15 +24,10 @@ public class HelloWorld {
 		return "Hello World!";
 	}
 	
-	@RequestMapping("/index")
+	@RequestMapping({"/index","/"})
 	public String index() {
 		log.info("get in index.do");
 		return "index";
 	}
 	
-	/*@RequestMapping("/")
-	public String index2() {
-		log.info("get in /.do");
-		return "common/403";
-	}*/
 }

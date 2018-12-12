@@ -1,45 +1,44 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
 <meta charset="UTF-8">
 <title>Login page</title>
-<link href="/statics/layui/css/layui.css" rel="stylesheet" type="text/css">
-<link href="/statics/css/login.css" rel="stylesheet" type="text/css">
+<link th:href="@{/statics/layui/css/layui.css}" rel="stylesheet" type="text/css">
+<link th:href="@{/statics/css/login.css}" rel="stylesheet" type="text/css">
 </head>
 <body>	
 	<div class="main-msg">
-		<form class="layui-form layui-form-pane" action="@{login}" method="post">
+		<form class="layui-form layui-form-pane" th:action="@{login}" method="post">
+			<h1 class="layui-form-item layui-word-aux center">LOGIN</h1>
 			<div class="layui-form-item">
-				<label class="layui-form-label">用户名</label>
+				<label class="layui-form-label"><i class="layui-icon layui-icon-username" style="font-size: 25px;"></i></label>
 				<div class="layui-input-block">
 					<input type="text" name="username" id="username" placeholder="Username" lay-verify="required" autocomplete="off" class="layui-input" />
 				</div>
 			</div>
 			<div class="layui-form-item">
-				<label class="layui-form-label">密码</label>
+				<label class="layui-form-label"><i class="layui-icon layui-icon-password" style="font-size: 25px;"></i></label>
 				<div class="layui-input-block">
 					<input type="password" name="password" id="password" placeholder="Password" lay-verify="required" autocomplete="off" class="layui-input" />
 				</div>
 			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label"><i class="layui-icon layui-icon-vercode" style="font-size: 25px;"></i></label>
+				<div class="layui-input-inline">
+					<input type="text" class="layui-input" name="vercode" id="vercode" placeholder="Vercode" lay-verify="required" autocomplete="off"/>
+				</div>
+				<div>
+					<img alt="vercode" onclick = "this.src='/kaptcha'" src="/kaptcha" title="点击更换验证码" />
+				</div>
+			</div>
+			<div class="layui-form-item" th:text="${msg}" style="text-align: center;color: #FF5722;"></div>
+			<div class="layui-form-item">
+				<input type="submit" value="SIGN IN" class="layui-btn layui-btn-fluid"/>
+			</div>
 		</form>
 	</div>
-	<!-- <h1>This is Login page!</h1>
-	temp错误信息：<h4 th:text="${msg}"></h4>
-	<form action="" method="post">
-		<p>
-			<label>用户名：</label>
-			<input type="text" name="username" id="username" />
-		</p>
-		<p>
-			<label>密码：</label>
-			<input type="password" name="password" id="password" />
-		</p>
-		<p>
-			<input type="submit" value="LOGIN" />
-		</p> 
-	</form> -->
 	
-	<script src="@{/statics/layui/layui.js}"></script>
+	<script th:src="@{/statics/layui/layui.js}"></script>
 	<script type="text/javascript">
 	
 	</script>
