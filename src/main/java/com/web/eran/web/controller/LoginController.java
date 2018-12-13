@@ -24,6 +24,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.google.code.kaptcha.impl.DefaultKaptcha;
+import com.web.eran.shiro.KaptchaErrorException;
 
 @Controller
 public class LoginController {
@@ -43,14 +44,14 @@ public class LoginController {
         String msg = "";
         if (exception != null) {
             if (UnknownAccountException.class.getName().equals(exception)) {
-                log.info("UnknownAccountException -- > 账号不存在：");
-                msg = "UnknownAccountException -- > 账号不存在：";
+                log.info("账号不存在!");
+                msg = "用户名密码错误!";
             } else if (IncorrectCredentialsException.class.getName().equals(exception)) {
-                log.info("IncorrectCredentialsException -- > 密码不正确：");
-                msg = "IncorrectCredentialsException -- > 密码不正确：";
-            } else if ("kaptchaValidateFailed".equals(exception)) {
-                log.info("kaptchaValidateFailed -- > 验证码错误");
-                msg = "kaptchaValidateFailed -- > 验证码错误";
+                log.info("密码错误!");
+                msg = "用户名密码错误!";
+            } else if (KaptchaErrorException.class.getName().equals(exception)) {
+                log.info("验证码错误");
+                msg = "验证码错误!";
             } else {
                 msg = "else >> "+exception;
                 log.info("else -- >" + exception);
@@ -68,7 +69,7 @@ public class LoginController {
 		try {  
 	         //生产验证码字符串并保存到session中
 	         String createText = kaptchaConfig.createText();
-	         request.getSession().setAttribute("verCode", createText);
+	         request.getSession().setAttribute("vercode", createText);
 	         //使用生产的验证码字符串返回一个BufferedImage对象并转为byte写入到byte数组中
             BufferedImage challenge = kaptchaConfig.createImage(createText);
             ImageIO.write(challenge, "jpg", jpegOutputStream);

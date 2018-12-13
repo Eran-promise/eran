@@ -49,11 +49,18 @@ public class MyShiroRealm extends AuthorizingRealm {
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token)
             throws AuthenticationException {
-        log.info("get in myRealm!");
-        //验证验证码
+        log.info("get in myRealm AuthenticationInfo!!");
+        //将参数token转化为自定义的token
+        MyUsernamePasswordToken my_token = (MyUsernamePasswordToken) token;
+        //获取表单提交内容中验证码
+        String vercode_form = my_token.getVercode();
+        //获取session中的vercode
+        String vercode_session = (String)SecurityUtils.getSubject().getSession().getAttribute("vercode");
+        //判断验证码是否正确
+        if(!vercode_form.equals(vercode_session))
+        	throw new KaptchaErrorException();//如果验证码错误则抛出自定义的异常
         //获取用户的输入的账号.
-        String username = (String)token.getPrincipal();
-//        log.info((String)token.getCredentials());
+        String username = my_token.getUsername();
         //通过username从数据库中查找 User对象，如果找到继续执行，没找到.返回null
         //实际项目中，这里可以根据实际情况做缓存，如果不做，Shiro自己也是有时间间隔机制，2分钟内不会重复执行该方法
         SysUser SysUser = SysUserService.findByUsername(username);

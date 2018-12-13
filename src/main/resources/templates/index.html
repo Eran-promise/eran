@@ -1,12 +1,133 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>layout 后台大布局 - Layui</title>
+  <link rel="stylesheet" th:href="@{/statics/layui/css/layui.css}">
 </head>
-<body>
-	<h1 th:text="'Hello,'+${session.username}">Hello World!temp</h1>
-	<a href="/logout">注销</a>
-	<div>https://blog.csdn.net/weixin_42500670/article/details/81629677</div>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+  <div class="layui-header">
+    <div class="layui-logo">layui 后台布局</div>
+    <!-- 头部区域（可配合layui已有的水平导航） -->
+    <ul class="layui-nav layui-layout-left">
+      <li class="layui-nav-item">
+        	<i class="layui-icon layui-icon-shrink-right" id="LAY_app_flexible"></i>
+      </li>
+      <li class="layui-nav-item"><a href="javascrpt:;">控制台</a></li>
+      <li class="layui-nav-item"><a href="javascrpt:;">商品管理</a></li>
+      <li class="layui-nav-item"><a href="javascrpt:;">用户</a></li>
+      <li class="layui-nav-item">
+        <a href="javascript:;">其它系统</a>
+        <dl class="layui-nav-child">
+          <dd><a href="javascrpt:;">邮件管理</a></dd>
+          <dd><a href="javascrpt:;">消息管理</a></dd>
+          <dd><a href="javascrpt:;">授权管理</a></dd>
+        </dl>
+      </li>
+    </ul>
+    <ul class="layui-nav layui-layout-right">
+      <li class="layui-nav-item">
+        <a href="javascript:;">
+          <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+          贤心
+        </a>
+        <dl class="layui-nav-child">
+          <dd><a href="">基本资料</a></dd>
+          <dd><a href="">安全设置</a></dd>
+        </dl>
+      </li>
+      <li class="layui-nav-item"><a href="">退了</a></li>
+    </ul>
+  </div>
+  
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree" lay-shrink="all">
+        <li class="layui-nav-item layui-nav-itemed">
+          <a class="" href="javascript:;"><i class="layui-icon layui-icon-set"></i>&nbsp;<span>所有商品</span></a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">列表一</a></dd>
+            <dd><a href="javascript:;">列表二</a></dd>
+            <dd><a href="javascript:;">列表三</a></dd>
+            <dd><a href="javascript:;">超链接</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;"><i class="layui-icon layui-icon-face-smile"></i>&nbsp;解决方案</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">列表一</a></dd>
+            <dd><a href="javascript:;">列表二</a></dd>
+            <dd><a href="javascript:;">列表三</a></dd>
+            <dd><a href="javascript:;">超链接</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;"><i class="layui-icon layui-icon-note"></i>&nbsp;云市场</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">列表一</a></dd>
+            <dd><a href="javascript:;">列表二</a></dd>
+            <dd><a href="javascript:;">列表三</a></dd>
+            <dd><a href="javascript:;">超链接</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;"><i class="layui-icon layui-icon-template-1"></i>&nbsp;发布商品</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">列表一</a></dd>
+            <dd><a href="javascript:;">列表二</a></dd>
+            <dd><a href="javascript:;">列表三</a></dd>
+            <dd><a href="javascript:;">超链接</a></dd>
+          </dl>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="layui-body">
+    <!-- 内容主体区域 -->
+    <div style="padding: 15px;">内容主体区域</div>
+  </div>
+  
+  <div class="layui-footer">
+    <!-- 底部固定区域 -->
+    © layui.com - 底部固定区域
+  </div>
+</div>
+<script th:src="@{statics/layui/layui.js}"></script>
+<script th:src="@{statics/layui/layui.all.js}"></script>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script>
+//JavaScript代码区域
+layui.use('element', function(){
+  var element = layui.element;
+  var i = 0;
+//左侧导航栏收缩功能动画效果
+  $('#LAY_app_flexible').click(function(){
+  	//这里定义一个全局变量来方便判断动画收缩的效果,也就是放在最外面
+  	if(i==0){
+  		$(".layui-side").animate({width:0});
+  		$(".layui-body").animate({left:'0px'});			
+  		$(".layui-footer").animate({left:'0px'});
+  		i++;
+  	}else{
+  		$(".layui-side").animate({width:200});
+  		$(".layui-body").animate({left:'200px'});
+  		$(".layui-footer").animate({left:'200px'});
+  		i--;
+  	}		
+  });
+  //左侧导航栏收缩提示
+  $('#animation-left-nav').hover(function(){
+  	layer.tips('收缩左侧导航栏', '#animation-left-nav', {tips:[4,'#FF8000'],time:0});
+  },function(){
+  	layer.closeAll('tips'); 
+  });
+});
+
+
+</script>
 </body>
 </html>
