@@ -7,124 +7,19 @@
   <link rel="stylesheet" th:href="@{/statics/layui/css/layui.css}">
 </head>
 <body class="layui-layout-body">
-<div class="layui-layout layui-layout-admin">
-  <div class="layui-header">
-    <div class="layui-logo">Layui Admin</div>
-    <!-- 头部区域（可配合layui已有的水平导航） -->
-    <ul class="layui-nav layui-layout-left temp">
-      <li class="layui-nav-item">
-        	<i class="layui-icon layui-icon-shrink-right" id="LAY_app_flexible"></i>
-      </li>
-      <li class="layui-nav-item"><a href="javascrpt:;">控制台</a></li>
-      <li class="layui-nav-item"><a href="javascrpt:;">商品管理</a></li>
-      <li class="layui-nav-item"><a href="javascrpt:;">用户</a></li>
-      <li class="layui-nav-item">
-        <a href="javascript:;">其它系统</a>
-        <dl class="layui-nav-child">
-          <dd><a href="javascrpt:;">邮件管理</a></dd>
-          <dd><a href="javascrpt:;">消息管理</a></dd>
-          <dd><a href="javascrpt:;">授权管理</a></dd>
-        </dl>
-      </li>
-    </ul>
-    <ul class="layui-nav layui-layout-right">
-      <li class="layui-nav-item">
-        <a href="javascript:;">
-          <img src="http://t.cn/RCzsdCq" class="layui-nav-img"><label th:text="${session.username}"></label>
-        </a>
-        <dl class="layui-nav-child">
-          <dd><a href="">基本资料</a></dd>
-          <dd><a href="">安全设置</a></dd>
-        </dl>
-      </li>
-      <li class="layui-nav-item"><a th:href="@{/logout}">退出</a></li>
-    </ul>
-  </div>
-  
-  <div class="layui-side layui-bg-black">
-    <div class="layui-side-scroll">
-      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-      <ul class="layui-nav layui-nav-tree" lay-shrink="all">
-        <li class="layui-nav-item layui-nav-itemed">
-          <a class="" href="javascript:;"><i class="layui-icon layui-icon-set"></i>&nbsp;<span>所有商品</span></a>
-          <dl class="layui-nav-child">
-            <dd><a href="javascript:;">列表一</a></dd>
-            <dd><a href="javascript:;">列表二</a></dd>
-            <dd><a href="javascript:;">列表三</a></dd>
-            <dd><a href="javascript:;">超链接</a></dd>
-          </dl>
-        </li>
-        <li class="layui-nav-item">
-          <a href="javascript:;"><i class="layui-icon layui-icon-face-smile"></i>&nbsp;解决方案</a>
-          <dl class="layui-nav-child">
-            <dd><a href="javascript:;">列表一</a></dd>
-            <dd><a href="javascript:;">列表二</a></dd>
-            <dd><a href="javascript:;">列表三</a></dd>
-            <dd><a href="javascript:;">超链接</a></dd>
-          </dl>
-        </li>
-        <li class="layui-nav-item">
-          <a href="javascript:;"><i class="layui-icon layui-icon-note"></i>&nbsp;云市场</a>
-          <dl class="layui-nav-child">
-            <dd><a href="javascript:;">列表一</a></dd>
-            <dd><a href="javascript:;">列表二</a></dd>
-            <dd><a href="javascript:;">列表三</a></dd>
-            <dd><a href="javascript:;">超链接</a></dd>
-          </dl>
-        </li>
-        <li class="layui-nav-item">
-          <a href="javascript:;"><i class="layui-icon layui-icon-template-1"></i>&nbsp;发布商品</a>
-          <dl class="layui-nav-child">
-            <dd><a href="javascript:;">列表一</a></dd>
-            <dd><a href="javascript:;">列表二</a></dd>
-            <dd><a href="javascript:;">列表三</a></dd>
-            <dd><a href="javascript:;">超链接</a></dd>
-          </dl>
-        </li>
-      </ul>
-    </div>
-  </div>
-  
-  <div class="layui-body">
+<div class="layui-layout layui-layout-admin">  
+	<!-- 引入头部 -->
+	<div th:replace="common/nav :: head"></div>	
+	<!-- 引入左侧菜单栏 -->
+	<div th:replace="common/nav :: side"></div>
     <!-- 内容主体区域 -->
-    <div style="padding: 15px;">内容主体区域</div>
-  </div>
-  
-  <div class="layui-footer">
-    <!-- 底部固定区域 -->
-    © layui.com - 底部固定区域
-  </div>
+    <div class="layui-body">
+    	<div style="padding: 15px;">内容主体区域</div>
+  	</div>
+    <!-- 引入尾部 -->
+    <div th:replace="common/nav :: foot"></div>
 </div>
-<script th:src="@{statics/layui/layui.js}"></script>
-<script th:src="@{statics/layui/layui.all.js}"></script>
-<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
-<script>
-//JavaScript代码区域
-layui.use('element', function(){
-  var element = layui.element;
-  var i = 0;
-  //左侧导航栏收缩功能动画效果
-  $('#LAY_app_flexible').click(function(){
-  	//这里定义一个全局变量来方便判断动画收缩的效果,也就是放在最外面
-  	if(i==0){
-  		$(".layui-side").animate({width:0});
-  		$(".layui-logo").animate({width:0}).html("");
-  		$(".layui-body").animate({left:'0px'});			
-  		$(".layui-footer").animate({left:'0px'});
-  		$(".temp").animate({left:'0px'});
-  		i++;
-  	}else{
-  		$(".layui-side").animate({width:200});
-  		$(".layui-logo").animate({width:200}).html("Layui Admin");
-  		$(".layui-body").animate({left:'200px'});
-  		$(".layui-footer").animate({left:'200px'});
-  		$(".temp").animate({left:'200px'});
-  		i--;
-  	}		
-  });
-});
-
-
-</script>
+<!-- 引入公共js -->
+<div th:replace="common/nav :: com_js"></div>
 </body>
 </html>
