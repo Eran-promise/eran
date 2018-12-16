@@ -1,5 +1,6 @@
 package com.web.eran.service;
 
+
 import com.web.eran.entity.SysUser;
 
 /**
@@ -9,8 +10,9 @@ import com.web.eran.entity.SysUser;
 */
 
 
-
 public interface ISysUserService {
 
 	public SysUser findByUsername(String userName);
+	
+	public int update(SysUser entity);
 }

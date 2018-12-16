@@ -1,0 +1,19 @@
+spring boot 整合ehcache 
+1：在pom中引入依赖
+	<!--开启 cache 缓存-->
+	  <dependency>
+	      <groupId>org.springframework.boot</groupId>
+	      <artifactId>spring-boot-starter-cache</artifactId>
+	  </dependency>
+	<!-- EhCache -->
+	<dependency>
+	    <groupId>net.sf.ehcache</groupId>
+	    <artifactId>ehcache</artifactId>
+	</dependency>
+2：在启动类中添加开启缓存注解配置
+@EnableCaching
+3：在resources路径下添加ehcache.xml配置文件，并且配置相应的缓存策略
+4：在配置文件中配置ehcache
+cache.type=ehcache
+cache.ehcache.config=classpth:ehcache.xml
+5：在services类里边添加注解使用缓存

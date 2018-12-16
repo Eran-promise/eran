@@ -1,8 +1,12 @@
 package com.web.eran.service.impl;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.web.eran.dao.SysUserMapper;
@@ -17,14 +21,24 @@ import com.web.eran.service.ISysUserService;
 @Service("SysUserService")
 public class SysUserServiceImpl implements ISysUserService{
 	
-	private final Logger log = LoggerFactory.getLogger(SysUserServiceImpl.class);
-	
 	@Autowired
 	private SysUserMapper sysUserMapper;
+	
+	private static final String CACHE_KEY = "'user'";
+	
+	private static final String CACHE_NAME = "userCache";
 
 	@Override
+	@Cacheable(value=CACHE_NAME,key="'user1'")
 	public SysUser findByUsername(String userName) {
 		return sysUserMapper.getUserByName(userName);
+	}
+
+	@Override
+	@CacheEvict(value=CACHE_NAME,key="'user1'")
+	public int update(SysUser entity) {
+		// TODO Auto-generated method stub
+		return sysUserMapper.update(entity);
 	}
 
 }
