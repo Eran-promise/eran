@@ -33,14 +33,19 @@
 			</div>
 			<div class="layui-form-item" th:text="${msg}" style="text-align: center;color: #FF5722;"></div>
 			<div class="layui-form-item">
-				<input type="submit" value="SIGN IN" class="layui-btn layui-btn-fluid"/>
+				<input type="submit" value="SIGN IN" class="layui-btn layui-btn-fluid" lay-submit lay-filter="loginf"/>
 			</div>
 		</form>
 	</div>
 	
 	<script th:src="@{/statics/layui/layui.js}"></script>
 	<script type="text/javascript">
-	
+		layui.use('form',function(){
+			var form = layui.form;			
+			form.on('submit(loginf)',function(data){
+				console.log(data);
+			});
+		});
 	</script>
 </body>
 </html>
