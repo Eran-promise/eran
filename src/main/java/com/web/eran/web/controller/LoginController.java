@@ -24,6 +24,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.google.code.kaptcha.impl.DefaultKaptcha;
+import com.web.eran.config.aoplog.Log;
 import com.web.eran.shiro.KaptchaErrorException;
 
 @Controller

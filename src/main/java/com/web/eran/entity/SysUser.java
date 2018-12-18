@@ -1,11 +1,20 @@
 package com.web.eran.entity;
 
+import java.io.Serializable;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * sys_user
  */
  
  
-public class SysUser{
+public class SysUser implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	//主键 : id 	
 	private Long id; 
 	
