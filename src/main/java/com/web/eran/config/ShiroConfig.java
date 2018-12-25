@@ -47,6 +47,8 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/statics/**", "anon");
         //生成验证码可以匿名访问
         filterChainDefinitionMap.put("/kaptcha/**", "anon");
+        //Actuator监控服务可以匿名访问
+        filterChainDefinitionMap.put("/actuator/**", "anon");
         //配置记住我和认证成功可以访问的url
         filterChainDefinitionMap.put("/", "user");
         //配置退出 过滤器,其中的具体的退出代码Shiro已经替我们实现了
