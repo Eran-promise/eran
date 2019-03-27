@@ -36,7 +36,6 @@ public class ShiroConfig {
 
 	@Bean
     public ShiroFilterFactoryBean shirFilter(SecurityManager securityManager) {
-        log.info("get in shiro config class!!");
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(securityManager);
         Map<String, Filter> map =new HashMap<>();
@@ -59,7 +58,7 @@ public class ShiroConfig {
         // 如果不设置默认会自动寻找Web工程根目录下的"/login.jsp"页面
         shiroFilterFactoryBean.setLoginUrl("/login");
         // 登录成功后要跳转的链接(就算设置了也没用，shiro会先找"/"路径的controller，如果找不到则匹配templates下面的index.html页面)
-        shiroFilterFactoryBean.setSuccessUrl("/index.do");
+        shiroFilterFactoryBean.setSuccessUrl("/index");
 
         //未授权界面;
         shiroFilterFactoryBean.setUnauthorizedUrl("/403");

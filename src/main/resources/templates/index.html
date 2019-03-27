@@ -5,6 +5,49 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>layout 后台大布局 - Layui</title>
   <link rel="stylesheet" th:href="@{/statics/layui/css/layui.css}">
+  <style type="text/css">
+  	.my-col{
+  		background-color: white;
+  		padding: 10px;
+  		box-shadow: 5px 5px 5px #888888;
+  	}
+  	.my-row-tongji{
+  		margin-top:0px;
+  	}
+  	.my-own{
+  		margin: 0px 10px;  	
+  		height:50px;	
+  	}
+  	.my-font{
+  		font-style: normal;
+	    font-size: 30px;
+	    font-weight: 300;
+	    color: #009688;
+  	}
+  	.my-row-tubiao{
+  		margin-top:0px;
+  	}
+  	.my-col-tubiao{
+  		background-color: white;
+  		min-height: 300px;
+  		box-shadow: 5px 5px 5px #888888;
+  	}
+  	.my-charts-title{
+  		padding: 5px;
+  		border-bottom: 1px solid #eee;
+  	}
+  	.my-charts-msg{
+  		height: 250px;
+  		padding: 5px;
+  	}
+  	.my-zhu-left{
+  		min-height: 300px;
+  	}
+  	.my-zhu-right{
+  		min-height: 300px;
+  		border-left: 1px solid #eee;
+  	}
+  </style>
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">  
@@ -13,16 +56,236 @@
 	<!-- 引入左侧菜单栏 -->
 	<div th:replace="common/nav :: side"></div>
     <!-- 内容主体区域 -->
-    <div class="layui-body">
-    	<div style="padding: 15px;">内容主体区域</div>
+    <div class="layui-body" style="background-color: #eee;">
+    	<div class="layui-fluid">
+    		<!-- 统计信息开始 -->
+    		<div class="layui-row layui-col-space30 my-row-tongji">
+	    		<div class="layui-col-md2">
+	    			<div class="my-col">
+	    				<div class="layui-inline">
+	    					<i class="layui-icon layui-icon-face-smile" style="font-size: 50px; color: #009688;"></i>
+	    				</div>
+	    				<div class="layui-inline my-own">
+	    					<h3 class="layui-text" style="font-size: 12px;">站点</h3>
+	    					<p class="my-font">6434</p>
+	    				</div>
+	    			</div>
+	    		</div>
+	    		<div class="layui-col-md2">
+	    			<div class="my-col">
+	    				<div class="layui-inline">
+	    					<i class="layui-icon layui-icon-app" style="font-size: 50px; color: #009688;"></i>
+	    				</div>
+	    				<div class="layui-inline my-own">
+	    					<h3 class="layui-text" style="font-size: 12px;">服务器</h3>
+	    					<p class="my-font">777</p>
+	    				</div>
+	    			</div>
+	    		</div>
+	    		<div class="layui-col-md2">
+	    			<div class="my-col">
+	    				<div class="layui-inline">
+	    					<i class="layui-icon layui-icon-website" style="font-size: 50px; color: #009688;"></i>
+	    				</div>
+	    				<div class="layui-inline my-own">
+	    					<h3 class="layui-text" style="font-size: 12px;">防护组</h3>
+	    					<p class="my-font">434</p>
+	    				</div>
+	    			</div>
+	    		</div>
+	    		<div class="layui-col-md2">
+	    			<div class="my-col">
+	    				<div class="layui-inline">
+	    					<i class="layui-icon layui-icon-file-b" style="font-size: 50px; color: #009688;"></i>
+	    				</div>
+	    				<div class="layui-inline my-own">
+	    					<h3 class="layui-text" style="font-size: 12px;">保护文件</h3>
+	    					<p class="my-font">6434</p>
+	    				</div>
+	    			</div>
+	    		</div>
+	    		<div class="layui-col-md2">
+	    			<div class="my-col">
+	    				<div class="layui-inline">
+	    					<i class="layui-icon layui-icon-form" style="font-size: 50px; color: #009688;"></i>
+	    				</div>
+	    				<div class="layui-inline my-own">
+	    					<h3 class="layui-text" style="font-size: 12px;">篡改文件</h3>
+	    					<p class="my-font">6434</p>
+	    				</div>
+	    			</div>
+	    		</div>
+	    		<div class="layui-col-md2">
+	    			<div class="my-col">
+	    				<div class="layui-inline">
+	    					<i class="layui-icon layui-icon-chart-screen" style="font-size: 50px; color: #009688;"></i>
+	    				</div>
+	    				<div class="layui-inline my-own">
+	    					<h3 class="layui-text" style="font-size: 12px;">恢复文件</h3>
+	    					<p class="my-font">6494</p>
+	    				</div>
+	    			</div>
+	    		</div>
+	    	</div><!-- 统计信息结束 -->
+	    	
+	    	<!-- 图表第一行开始 -->
+	    	<div class="layui-row layui-col-space30 my-row-tubiao">
+	    		<div class="layui-col-md4">
+	    			<div class="my-col-tubiao">
+	    				<div class="my-charts-title">
+	    					<form class="layui-form">
+    							<label class="layui-form-label">防护组选择</label>
+    							<div class="layui-input-block">
+    								<select name="city" lay-verify="required">
+								        <option value="">全部</option>
+								        <option value="0">防护组一</option>
+								        <option value="1">防护组二</option>
+								        <option value="2">防护组三</option>
+								     </select>
+    							</div>
+	    					</form>
+	    				</div>
+	    				<div class="my-charts-msg" id="zhexian"></div>
+	    			</div>
+	    		</div>
+	    		<div class="layui-col-md4">
+	    			<div class="my-col-tubiao">
+	    				<div class="my-charts-title">
+	    					<form class="layui-form">
+	    						<label class="layui-form-label">事件选择</label>
+    							<div class="layui-input-block">
+    								<select name="city" lay-verify="required">
+								        <option value="">全部</option>
+								        <option value="0">文件注入</option>
+								        <option value="1">文件篡改</option>
+								        <option value="2">文件删除</option>
+								        <option value="3">文件重命名</option>
+								     </select>
+    							</div>
+	    					</form>
+	    				</div>
+	    				<div class="my-charts-msg" id="shijian"></div>
+	    			</div>
+	    		</div>
+	    		<div class="layui-col-md4">
+	    			<div class="my-col-tubiao">
+	    				<div class="my-charts-title">
+	    					<form class="layui-form">
+	    						<label class="layui-form-label">网站选择</label>
+    							<div class="layui-input-block">
+    								<select name="city" lay-verify="required">
+								        <option value="">全部</option>
+								        <option value="0">站点一</option>
+								        <option value="1">站点二</option>
+								        <option value="2">站点三</option>
+								     </select>
+    							</div>
+	    					</form>
+	    				</div>
+	    				<div class="my-charts-msg" id="website"></div>
+	    			</div>
+	    		</div>
+	    	</div><!-- 图表第一行结束 -->
+	    	
+	    	<!-- 图表第二行开始 -->
+	    	<div class="layui-row layui-col-space30">
+	    		<div class="layui-col-md8">
+	    			<div class="my-col-tubiao" style="min-height:315px;">
+	    				<div class="layui-col-md7">
+	    					<div class="my-zhu-left">
+	    						<div class="my-charts-title">
+	    							<h3 >服务器流量</h3>
+	    							<p class="layui-text" style="font-size: 12px;">监控服务器网口进出流量</p>
+	    						</div>
+	    						<div class="my-charts-msg" id="liuliang"></div>
+	    					</div>
+	    				</div>
+	    				<div class="layui-col-md5">
+	    					<div class="my-zhu-right">
+	    						<div class="my-charts-title">
+	    							<form class="layui-form">
+			    						<div style="text-align: left; width: 140px; float: left;">
+			    							<h3>服务器状态</h3>
+			    							<p class="layui-text" style="font-size: 12px;">监控服务器网口进出流量</p>
+			    						</div>
+		    							<div class="layui-input-block" style="margin-left: 190px;padding: 2px 0px;">
+		    								<select name="city" lay-verify="required">
+										        <option value="">选择服务器</option>
+										        <option value="0">服务器一</option>
+										        <option value="1">服务器二</option>
+										        <option value="2">服务器三</option>
+										     </select>
+		    							</div>
+			    					</form>	    							    							
+	    						</div>
+	    						<div class="my-charts-msg">
+    								<p class="layui-text" style="font-size: 12px; margin-top: 10px;">CPU使用率</p>
+	    							<div class="layui-progress">
+									  <div class="layui-progress-bar" lay-percent="20%"></div>
+									</div>
+									<p class="layui-text" style="font-size: 12px; margin-top: 10px;">Memory使用率</p>
+	    							<div class="layui-progress">
+									  <div class="layui-progress-bar" lay-percent="10%"></div>
+									</div>
+									<p class="layui-text" style="font-size: 12px; margin-top: 10px;">Disk使用率</p>
+	    							<div class="layui-progress">
+									  <div class="layui-progress-bar" lay-percent="50%"></div>
+									</div>
+									<p class="layui-text" style="font-size: 12px; margin-top: 10px;">端口使用率</p>
+	    							<div class="layui-progress">
+									  <div class="layui-progress-bar" lay-percent="90%"></div>
+									</div>	
+									<p class="layui-text" style="font-size: 12px; margin-top: 10px;">进程/线程</p>
+	    							<div class="layui-progress">
+									  <div class="layui-progress-bar" lay-percent="30%"></div>
+									</div>	
+									<p class="layui-text" style="font-size: 12px; margin-top: 10px;">日志使用量</p>
+	    							<div class="layui-progress">
+									  <div class="layui-progress-bar" lay-percent="60%"></div>
+									</div>	    							
+	    						</div>
+	    					</div>
+	    				</div>
+	    			</div>
+	    		</div>
+	    		<div class="layui-col-md4">
+	    			<div class="my-col-tubiao"></div>
+	    		</div>
+	    	</div>
+	    	<!-- 图表第二行结束 -->
+    	</div>
+    	
   	</div>
     <!-- 引入尾部 -->
     <div th:replace="common/nav :: foot"></div>
 </div>
 <!-- 引入公共js -->
 <div th:replace="common/nav :: com_js"></div>
+<script th:src="@{statics/js/echarts.js}"></script>
+<script th:src="@{statics/js/indexCharts.js}"></script>
 <script>
-
+ layui.use(['element','form'], function(){
+   var form = layui.form,
+   element = layui.element;
+ });
+ var data1 = [120, 132, 101, 134, 90, 230, 0];
+ var data2 = [220, 182, 191, 234, 290, 330, 20];
+ var chart_zhexian = echarts.init(document.getElementById('zhexian'));
+ chart_zhexian.setOption(wangzhan(data1, data2));
+ 
+ var data3 = [20, 132, 301, 134, 90, 230, 0];
+ var data4 = [0, 182, 191, 224, 290, 330, 20];
+ var chart_shijian = echarts.init(document.getElementById('shijian'));
+ chart_shijian.setOption(shijian(data3, data4));
+ 
+ var data5 = [20, 132, 301, 134, 90, 230, 100];
+ var data6 = [0, 82, 141, 524, 290, 130, 20];
+ var chart_website = echarts.init(document.getElementById('website'));
+ chart_website.setOption(website(data5, data6));
+ 
+ var data7 = [120, 200, 150, 80, 70, 110, 130];
+ var chart_liuliang = echarts.init(document.getElementById('liuliang'));
+ chart_liuliang.setOption(liuliang(data7));
 
 </script>
 </body>

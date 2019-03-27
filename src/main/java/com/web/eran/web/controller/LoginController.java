@@ -45,17 +45,13 @@ public class LoginController {
         String msg = "";
         if (exception != null) {
             if (UnknownAccountException.class.getName().equals(exception)) {
-                log.info("账号不存在!");
                 msg = "用户名密码错误!";
             } else if (IncorrectCredentialsException.class.getName().equals(exception)) {
-                log.info("密码错误!");
                 msg = "用户名密码错误!";
             } else if (KaptchaErrorException.class.getName().equals(exception)) {
-                log.info("验证码错误");
                 msg = "验证码错误!";
             } else {
                 msg = "else >> "+exception;
-                log.info("else -- >" + exception);
             }
         }
         map.put("msg", msg);
