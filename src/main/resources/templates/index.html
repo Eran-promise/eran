@@ -56,8 +56,14 @@
 	<!-- 引入左侧菜单栏 -->
 	<div th:replace="common/nav :: side"></div>
     <!-- 内容主体区域 -->
-    <div class="layui-body" style="background-color: #eee;">
-    	<div class="layui-fluid">
+    <div class="layui-body" style="background-color: #f2f2f2;">
+    	<div class="layui-card" style="height: 50px;line-height: 50px; margin-bottom: 0px;">
+		  <div class="layui-breadcrumb" style="visibility: visible;margin-left: 15px;">
+		    <a href="javascript:;">系统</a>
+		    <a><cite>首页</cite></a>
+		  </div>
+		</div>
+    	<div class="layui-fluid">    		
     		<!-- 统计信息开始 -->
     		<div class="layui-row layui-col-space30 my-row-tongji">
 	    		<div class="layui-col-md2">

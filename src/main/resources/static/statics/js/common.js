@@ -9,6 +9,7 @@
   		$(".layui-body").animate({left:'0px'});			
   		$(".layui-footer").animate({left:'0px'});
   		$(".temp").animate({left:'0px'});
+  		$(this).addClass("layui-icon-spread-left").removeClass("layui-icon-shrink-right");
   		i++;
   	}else{
   		$(".layui-side").animate({width:200});
@@ -16,6 +17,7 @@
   		$(".layui-body").animate({left:'200px'});
   		$(".layui-footer").animate({left:'200px'});
   		$(".temp").animate({left:'200px'});
+  		$(this).removeClass("layui-icon-spread-left").addClass("layui-icon-shrink-right");
   		i--;
   	}
   });

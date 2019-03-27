@@ -10,19 +10,15 @@
     <div class="layui-logo">Layui Admin</div>
     <ul class="layui-nav layui-layout-left temp">
       <li class="layui-nav-item">
-        	<a href="javascrpt:;"><i class="layui-icon layui-icon-shrink-right" id="LAY_app_flexible"></i></a>
+        	<a href="javascrpt:;"><i class="layui-icon layui-icon-shrink-right" style="font-size :16px;color: #009688;" id="LAY_app_flexible"></i></a>
       </li>
-      <li class="layui-nav-item layui-this"><a href="javascrpt:;">用户模块</a></li>
-      <li class="layui-nav-item"><a href="javascrpt:;">权限模块</a></li>
-      <li class="layui-nav-item"><a href="javascrpt:;">日志模块</a></li>
-      <li class="layui-nav-item">
-        <a href="javascript:;">其它系统</a>
-        <dl class="layui-nav-child">
-          <dd><a href="javascrpt:;">邮件管理</a></dd>
-          <dd><a href="javascrpt:;">消息管理</a></dd>
-          <dd><a href="javascrpt:;">授权管理</a></dd>
-        </dl>
-      </li>
+      <li class="layui-nav-item layui-this"><a href="javascrpt:;">系统管理</a></li>
+      <li class="layui-nav-item"><a href="javascrpt:;">用户管理</a></li>
+      <li class="layui-nav-item"><a href="javascrpt:;">权限管理</a></li>
+      <li class="layui-nav-item"><a href="javascrpt:;">日志管理</a></li>
+      <li class="layui-nav-item"><a href="javascrpt:;">网站管理</a></li>
+      <li class="layui-nav-item"><a href="javascrpt:;">服务器管理</a></li>
+      <li class="layui-nav-item"><a href="javascrpt:;">防护组管理</a></li>
     </ul>
     <ul class="layui-nav layui-layout-right">
       <li class="layui-nav-item">
@@ -42,11 +38,11 @@
   <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
   <div class="layui-side layui-bg-black" th:fragment="side">
     <div class="layui-side-scroll">
-      <ul class="layui-nav layui-nav-tree" lay-shrink="all">
+      <ul class="layui-nav layui-nav-tree" lay-shrink="all" id="">
         <li class="layui-nav-item layui-nav-itemed">
           <a class="" href="javascript:;"><i class="layui-icon layui-icon-set"></i>&nbsp;<span>所有商品</span></a>
           <dl class="layui-nav-child">
-            <dd><a href="javascript:;">列表一</a></dd>
+            <dd class="layui-this"><a href="javascript:;">列表一</a></dd>
             <dd><a href="javascript:;">列表二</a></dd>
             <dd><a href="javascript:;">列表三</a></dd>
             <dd><a href="javascript:;">超链接</a></dd>
