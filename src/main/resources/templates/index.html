@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>layout 后台大布局 - Layui</title>
   <link rel="stylesheet" th:href="@{/statics/layui/css/layui.css}">
+  <link rel="stylesheet" th:href="@{/statics/css/common.css}">
   <style type="text/css">
   	.my-col{
   		background-color: white;
@@ -47,6 +48,15 @@
   		min-height: 300px;
   		border-left: 1px solid #eee;
   	}
+  	.my-warn{
+  		height:30px;
+  		padding: 5px;
+  		line-height: 20px;
+  		font-size: 14px;
+  		background: #f2f2f2;
+  		margin-top: 5px;
+  		border-radius: 5px;
+  	}  	
   </style>
 </head>
 <body class="layui-layout-body">
@@ -56,7 +66,7 @@
 	<!-- 引入左侧菜单栏 -->
 	<div th:replace="common/nav :: side"></div>
     <!-- 内容主体区域 -->
-    <div class="layui-body" style="background-color: #f2f2f2;">
+    <div class="layui-body my-body-bgcolor">
     	<div class="layui-card" style="height: 50px;line-height: 50px; margin-bottom: 0px;">
 		  <div class="layui-breadcrumb" style="visibility: visible;margin-left: 15px;">
 		    <a href="javascript:;">系统</a>
@@ -188,7 +198,9 @@
     							</div>
 	    					</form>
 	    				</div>
-	    				<div class="my-charts-msg" id="website"></div>
+	    				<div class="my-charts-msg" id="website">
+	    					
+	    				</div>
 	    			</div>
 	    		</div>
 	    	</div><!-- 图表第一行结束 -->
@@ -255,7 +267,32 @@
 	    			</div>
 	    		</div>
 	    		<div class="layui-col-md4">
-	    			<div class="my-col-tubiao"></div>
+	    			<div class="my-col-tubiao">
+	    				<div class="my-charts-title" style="height:39px;line-height: 39px;">
+	    					<label style="margin-left: 15px; font-size: 18px; font-weight: bold;">今日告警</label>
+	    				</div>
+	    				<div class="my-charts-msg" style="height: 255px; overflow-y: auto;">
+	    					<div class="layui-col-md12 my-warn">
+	    						站点一appSrv01-test.log发生添加篡改 @ 7:00
+	    					</div>
+	    					<div class="layui-col-md12 my-warn">
+	    						站点一appSrv01-test.log发生添加篡改 @ 7:00
+	    					</div>
+	    					<div class="layui-col-md12 my-warn">
+	    						站点一appSrv01-test.log发生添加篡改 @ 7:00
+	    					</div>
+	    					<div class="layui-col-md12 my-warn">
+	    						站点一appSrv01-test.log发生添加篡改 @ 7:00
+	    					</div>
+	    					<div class="layui-col-md12 my-warn">
+	    						站点一appSrv01-test.log发生添加篡改 @ 7:00
+	    					</div>
+	    					<div class="layui-col-md12 my-warn">
+	    						站点一appSrv01-test.log发生添加篡改 @ 7:00
+	    					</div>
+	    					
+	    				</div>
+	    			</div>
 	    		</div>
 	    	</div>
 	    	<!-- 图表第二行结束 -->
@@ -270,6 +307,7 @@
 <script th:src="@{statics/js/echarts.js}"></script>
 <script th:src="@{statics/js/indexCharts.js}"></script>
 <script>
+ showSideAndNav("system");
  layui.use(['element','form'], function(){
    var form = layui.form,
    element = layui.element;

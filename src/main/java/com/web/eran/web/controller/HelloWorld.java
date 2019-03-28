@@ -42,25 +42,6 @@ public class HelloWorld {
 	public String index() {
 		log.info("get in index.do");
 		return "index";
-	}
-	
-	@RequestMapping("/user")
-	@ResponseBody
-	public SysUser User(){
-		SysUser user = sysUserService.findByUsername("eran");
-		try {
-			System.out.println(user.toString());
-			String str = mapper.writeValueAsString(user);
-			System.out.println("json格式："+str);
-			SysUser temp = mapper.readValue(str, SysUser.class);
-			System.out.println("类格式"+temp);
-		} catch (JsonProcessingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}catch (IOException e) {
-			
-		}
-		return user;
-	}
+	}	
 	
 }

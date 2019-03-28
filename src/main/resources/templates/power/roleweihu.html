@@ -17,7 +17,7 @@
 	<div th:replace="common/nav :: side"></div>
     <!-- 内容主体区域 -->
     <div class="layui-body" style="background-color: #f2f2f2;">
-    	<h1>用户信息页面</h1>
+    	<h1>角色维护页面</h1>
   	</div>
     <!-- 引入尾部 -->
     <div th:replace="common/nav :: foot"></div>
@@ -25,7 +25,7 @@
 <!-- 引入公共js -->
 <div th:replace="common/nav :: com_js"></div>
 <script>
-	showSideAndNav("website");
+	showSideAndNav("power");
 	layui.use(['element'], function(){
 	   var form = layui.form;
 	});

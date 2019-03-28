@@ -21,3 +21,16 @@
   		i--;
   	}
   });
+  
+  /**
+   * 显示当前页面对应的导航栏以及左侧菜单
+   * @param link
+   * @returns
+   */
+  function showSideAndNav(link){
+	  //选中当前导航栏
+	  $("#"+link+"-nav").addClass("layui-this");
+	  //显示当前导航栏对应的左侧菜单栏
+	  $("#"+link+"-side").removeClass("layui-hide");
+	  $(".layui-side ul").not("#"+link+"-side").addClass("layui-hide");
+  }
