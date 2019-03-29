@@ -21,4 +21,9 @@ public class UserController {
 	public String userInfo() {
 		return "user/userInfo";
 	}
+	
+	@RequestMapping(value="/passwordUpdate",method=RequestMethod.GET)
+	public String goPasswordUpdatePage() {
+		return "user/passwordUpdate";
+	}
 }
