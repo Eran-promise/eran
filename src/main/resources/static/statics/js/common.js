@@ -1,4 +1,6 @@
-//JavaScript代码区域
+  //=======================================================================================
+  //============================项目框架需要的方法=========================================
+  //=======================================================================================
   var i = 0;
   //左侧导航栏收缩功能动画效果
   $('#LAY_app_flexible').click(function(){
@@ -28,9 +30,18 @@
    * @returns
    */
   function showSideAndNav(link){
+	  var nav_link = link.substring(0,3);
 	  //选中当前导航栏
-	  $("#"+link+"-nav").addClass("layui-this");
+	  $(".layui-header ."+nav_link).addClass("layui-this");
 	  //显示当前导航栏对应的左侧菜单栏
-	  $("#"+link+"-side").removeClass("layui-hide");
-	  $(".layui-side ul").not("#"+link+"-side").addClass("layui-hide");
-  }
+	  $(".layui-side ."+nav_link).removeClass("layui-hide");
+	  $(".layui-side ul").not("."+nav_link).addClass("layui-hide");
+	  $("."+link).parent().parent().addClass("layui-nav-itemed");
+	  $("."+link).addClass("layui-this");
+  }  
+  
+  
+  //=======================================================================================
+  //============================定义项目需要的格式化对象===================================
+  //=======================================================================================
+  var lockedTemplet = {"0":"未锁定","1":"已锁定"};

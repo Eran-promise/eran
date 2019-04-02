@@ -1,5 +1,6 @@
 package com.web.eran.service.impl;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,18 @@ public class SysUserServiceImpl implements ISysUserService{
 	public int update(SysUser entity) {
 		// TODO Auto-generated method stub
 		return sysUserMapper.update(entity);
+	}
+
+	@Override
+	public List<SysUser> findBySelect(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return sysUserMapper.findBySelective(map);
+	}
+
+	@Override
+	public int findBySelectCount(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return sysUserMapper.findBySelectiveCount(map);
 	}
 
 }

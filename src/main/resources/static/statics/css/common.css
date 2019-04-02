@@ -22,8 +22,12 @@
 /* 页面模块内容 */
 .my-model-msg{
 	background-color: white;
-	min-height: 300px;
+	min-height: 100px;
 	box-shadow: 5px 5px 5px #888888;
 	padding: 10px;
 	border-radius: 2px;
+}
+/* 清除浮动 */
+.my-clear{
+	clear: both;
 }

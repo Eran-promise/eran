@@ -12,13 +12,13 @@
       <li class="layui-nav-item">
         	<a href="javascrpt:;"><i class="layui-icon layui-icon-shrink-right" style="font-size :16px;" id="LAY_app_flexible"></i></a>
       </li>
-      <li class="layui-nav-item" id="system-nav"><a href="/eran-admin/index">系统管理</a></li>
-      <li class="layui-nav-item" id="user-nav"><a href="/eran-admin/user/info">用户管理</a></li>
-      <li class="layui-nav-item" id="power-nav"><a href="/eran-admin/power/weihu">权限管理</a></li>
-      <li class="layui-nav-item" id="log-nav"><a href="/eran-admin/log/search">日志管理</a></li>
-      <li class="layui-nav-item" id="website-nav"><a href="/eran-admin/website/search">网站管理</a></li>
-      <li class="layui-nav-item" id="server-nav"><a href="/eran-admin/server/zonglan">服务器管理</a></li>
-      <li class="layui-nav-item" id="protect-nav"><a href="/eran-admin/protect/search">安全管理</a></li>
+      <li class="layui-nav-item 101"><a href="/eran-admin/index">系统管理</a></li>
+      <li class="layui-nav-item 102"><a href="/eran-admin/user/info">用户管理</a></li>
+      <li class="layui-nav-item 103"><a href="/eran-admin/power/weihu">权限管理</a></li>
+      <li class="layui-nav-item 104"><a href="/eran-admin/log/search">日志管理</a></li>
+      <li class="layui-nav-item 105"><a href="/eran-admin/website/search">网站管理</a></li>
+      <li class="layui-nav-item 106"><a href="/eran-admin/server/zonglan">服务器管理</a></li>
+      <li class="layui-nav-item 107"><a href="/eran-admin/protect/search">安全管理</a></li>
     </ul>
     <ul class="layui-nav layui-layout-right">
       <li class="layui-nav-item">
@@ -39,99 +39,98 @@
   <div class="layui-side layui-bg-black" th:fragment="side">
     <div class="layui-side-scroll">
     	<!-- 系统管理侧栏菜单 -->
-      <ul class="layui-nav layui-nav-tree" lay-shrink="all" id="system-side">
-        <li class="layui-nav-item layui-nav-itemed">
+      <ul class="layui-nav layui-nav-tree 101" lay-shrink="all">
+        <li class="layui-nav-item">
           <a class="" href="javascript:;"><i class="layui-icon layui-icon-set"></i>&nbsp;<span>系统管理</span></a>
           <dl class="layui-nav-child">
-            <dd class="layui-this"><a href="javascript:;">首页统计</a></dd>
+            <dd class="10101"><a href="/eran-admin/index">首页统计</a></dd>
           </dl>
         </li>        
       </ul>
       <!-- 用户管理侧栏菜单 -->
-      <ul class="layui-nav layui-nav-tree layui-hide" lay-shrink="all" id="user-side">
-        <li class="layui-nav-item layui-nav-itemed">
+      <ul class="layui-nav layui-nav-tree layui-hide 102" lay-shrink="all">
+        <li class="layui-nav-item">
           <a class="" href="javascript:;"><i class="layui-icon layui-icon-set"></i>&nbsp;<span>操作员管理</span></a>
           <dl class="layui-nav-child">
-            <dd class="layui-this"><a href="/eran-admin/user/info">基本信息</a></dd>
-            <dd><a href="/eran-admin/user/passwordUpdate">修改密码</a></dd>
-            <dd><a href="javascript:;">修改手机号</a></dd>
+            <dd class="10201"><a href="/eran-admin/user/info">基本信息</a></dd>
+            <dd class="10202"><a href="/eran-admin/user/passwordUpdate">修改密码</a></dd>
           </dl>
         </li>
         <li class="layui-nav-item layui-nav-tree">
           <a class="" href="javascript:;"><i class="layui-icon layui-icon-template-1"></i>&nbsp;<span>用户管理</span></a>
           <dl class="layui-nav-child">
-            <dd><a href="javascript:;">用户查询</a></dd>
-            <dd><a href="javascript:;">用户新增</a></dd>
-            <dd><a href="javascript:;">已删除用户</a></dd>
+            <dd class="10203"><a href="/eran-admin/user/search">用户查询</a></dd>
+            <dd class="10204"><a href="javascript:;">用户新增</a></dd>
+            <dd class="10205"><a href="javascript:;">已删除用户</a></dd>
           </dl>
         </li>        
       </ul>
       <!-- 权限管理侧栏菜单 -->
-      <ul class="layui-nav layui-nav-tree layui-hide" lay-shrink="all" id="power-side">
-        <li class="layui-nav-item layui-nav-itemed">
+      <ul class="layui-nav layui-nav-tree layui-hide 103" lay-shrink="all">
+        <li class="layui-nav-item">
           <a class="" href="javascript:;"><i class="layui-icon layui-icon-set"></i>&nbsp;<span>角色管理</span></a>
           <dl class="layui-nav-child">
-            <dd class="layui-this"><a href="javascript:;">角色维护</a></dd>
-            <dd><a href="javascript:;">新增角色</a></dd>
+            <dd class="10301"><a href="javascript:;">角色维护</a></dd>
+            <dd class="10302"><a href="javascript:;">新增角色</a></dd>
           </dl>
         </li>
       </ul>
       <!-- 日志管理侧栏菜单 -->
-      <ul class="layui-nav layui-nav-tree layui-hide" lay-shrink="all" id="log-side">
-        <li class="layui-nav-item layui-nav-itemed">
+      <ul class="layui-nav layui-nav-tree layui-hide 104" lay-shrink="all">
+        <li class="layui-nav-item">
           <a class="" href="javascript:;"><i class="layui-icon layui-icon-set"></i>&nbsp;<span>日志管理</span></a>
           <dl class="layui-nav-child">
-            <dd class="layui-this"><a href="javascript:;">操作日志</a></dd>
-            <dd><a href="javascript:;">登陆日志</a></dd>
+            <dd class="10401"><a href="javascript:;">操作日志</a></dd>
+            <dd class="10402"><a href="javascript:;">登陆日志</a></dd>
           </dl>
         </li>
       </ul>
       <!-- 网站管理侧栏菜单 -->
-      <ul class="layui-nav layui-nav-tree layui-hide" lay-shrink="all" id="website-side">
-        <li class="layui-nav-item layui-nav-itemed">
+      <ul class="layui-nav layui-nav-tree layui-hide 105" lay-shrink="all">
+        <li class="layui-nav-item">
           <a class="" href="javascript:;"><i class="layui-icon layui-icon-set"></i>&nbsp;<span>网站管理</span></a>
           <dl class="layui-nav-child">
-            <dd class="layui-this"><a href="javascript:;">网站查询</a></dd>
-            <dd><a href="javascript:;">网站新增</a></dd>
+            <dd class="10501"><a href="javascript:;">网站查询</a></dd>
+            <dd class="10502"><a href="javascript:;">网站新增</a></dd>
           </dl>
         </li>
       </ul>
       <!-- 服务器管理侧栏菜单 -->
-      <ul class="layui-nav layui-nav-tree layui-hide" lay-shrink="all" id="server-side">
-        <li class="layui-nav-item layui-nav-itemed">
+      <ul class="layui-nav layui-nav-tree layui-hide 106" lay-shrink="all">
+        <li class="layui-nav-item">
           <a class="" href="javascript:;"><i class="layui-icon layui-icon-set"></i>&nbsp;<span>服务器状态</span></a>
           <dl class="layui-nav-child">
-            <dd class="layui-this"><a href="javascript:;">状态总览</a></dd>
+            <dd class="10601"><a href="javascript:;">状态总览</a></dd>
           </dl>
         </li>
         <li class="layui-nav-item layui-nav-tree">
           <a class="" href="javascript:;"><i class="layui-icon layui-icon-set"></i>&nbsp;<span>服务器管理</span></a>
           <dl class="layui-nav-child">
-            <dd><a href="javascript:;">服务器查询</a></dd>
-            <dd><a href="javascript:;">服务器新增</a></dd>
+            <dd class="10602"><a href="javascript:;">服务器查询</a></dd>
+            <dd class="10603"><a href="javascript:;">服务器新增</a></dd>
           </dl>
         </li>
       </ul>
       <!-- 防护组管理侧栏菜单 -->
-      <ul class="layui-nav layui-nav-tree layui-hide" lay-shrink="all" id="protect-side">
-        <li class="layui-nav-item layui-nav-itemed">
+      <ul class="layui-nav layui-nav-tree layui-hide 107" lay-shrink="all">
+        <li class="layui-nav-item">
           <a class="" href="javascript:;"><i class="layui-icon layui-icon-set"></i>&nbsp;<span>防护组管理</span></a>
           <dl class="layui-nav-child">
-            <dd class="layui-this"><a href="javascript:;">防护组查询</a></dd>
-            <dd><a href="javascript:;">防护组新增</a></dd>
+            <dd class="10701"><a href="javascript:;">防护组查询</a></dd>
+            <dd class="10702"><a href="javascript:;">防护组新增</a></dd>
           </dl>
         </li>
         <li class="layui-nav-item layui-nav-tree">
           <a class="" href="javascript:;"><i class="layui-icon layui-icon-set"></i>&nbsp;<span>安全篡改</span></a>
           <dl class="layui-nav-child">
-            <dd><a href="javascript:;">篡改告警</a></dd>
-            <dd><a href="javascript:;">篡改分析</a></dd>
+            <dd class="10703"><a href="javascript:;">篡改告警</a></dd>
+            <dd class="10704"><a href="javascript:;">篡改分析</a></dd>
           </dl>
         </li>
         <li class="layui-nav-item layui-nav-tree">
           <a class="" href="javascript:;"><i class="layui-icon layui-icon-set"></i>&nbsp;<span>安全审计</span></a>
           <dl class="layui-nav-child">
-            <dd><a href="javascript:;">文件审计</a></dd>
+            <dd class="10705"><a href="javascript:;">文件审计</a></dd>
           </dl>
         </li>
       </ul>
