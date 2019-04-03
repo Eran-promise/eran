@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>已删除用户查询</title>
+  <link rel="stylesheet" th:href="@{/statics/layui/css/layui.css}">
+  <link rel="stylesheet" th:href="@{/statics/css/common.css}">
+  <style type="text/css">
+  	
+  </style>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">  
+	<!-- 引入头部 -->
+	<div th:replace="common/nav :: head"></div>	
+	<!-- 引入左侧菜单栏 -->
+	<div th:replace="common/nav :: side"></div>
+    <!-- 内容主体区域 -->
+    <div class="layui-body my-body-bgcolor">
+    	<div class="layui-card my-card">
+		  <div class="layui-breadcrumb" style="visibility: visible;margin-left: 15px;">
+		    <a href="javascript:;">用户管理</a>
+		    <a><cite>已删除用户</cite></a>
+		  </div>
+		</div>
+		<div class="layui-fluid" style="margin-top: 10px;">
+			<div class="layui-row">
+				<div class="layui-col-md12">
+					<div class="my-model-title layui-bg-red">
+						<label>已删除用户</label><br>
+	  					<label style="font-size: 12px;">查询已经删除的用户</label>
+					</div>
+					<div class="my-model-msg">
+						<!-- 内容检索条件栏 -->
+						<form class="layui-form layui-form-pane" style="border-bottom: 1px solid #eee">
+							<div class="layui-form-item">
+								<label class="layui-form-label">查询方式</label>
+    							<div class="layui-input-inline">
+    								<select name="select-type" lay-verify="required">
+								        <option value="0">用户姓名</option>
+								        <option value="1">用户账号</option>
+								     </select>
+    							</div>
+    							<div class="layui-input-inline">
+    								<input type="text" name="msg" class="layui-input" placeholder="请输入查询关键字"/>
+    							</div>
+    							<div class="layui-input-inline">
+    								<button type="button" class="layui-btn layui-btn-fluid" id="userSearch">查询</button>
+    							</div>
+							</div>
+						</form>
+						<!-- 内容展示表格栏 -->
+						<table id="userList" lay-filter="userTable"></table>
+					</div>
+				</div>
+			</div>
+		</div>
+  	</div>
+    <!-- 引入尾部 -->
+    <div th:replace="common/nav :: foot"></div>
+</div>
+<!-- 引入公共js -->
+<div th:replace="common/nav :: com_js"></div>
+<!-- 表格行内工具栏模板 -->
+<script type="text/html" id="toolbar">
+  <a class="layui-btn layui-btn-xs" lay-event="detail">查看</a>
+  <a class="layui-btn layui-btn-xs" lay-event="huifu">恢复</a>
+</script>
+<script type="text/javascript" th:inline="none">
+	showSideAndNav("10204");
+	layui.use(['element','form','layer','table'], function(){
+	   var element = layui.element,
+	   form = layui.form,
+	   table = layui.table,
+	   layer = layui.layer;
+	   //表格渲染
+	   var tableObj = table.render({
+		   elem:'#userList',
+		   page: {
+			   limit: 2,
+			   limits: [2,4,6,10,20],
+		   },
+		   url: '/eran-admin/user/select',
+		   toolbar: false,
+		   cols: [[{field:'id',title:"ID", width:80, sort: true, align:'center'},
+			   {field:'usercode',title:"账号", align:'center'},
+			   {field:'username',title:"姓名", align:'center'},
+			   {field:'password',title:"密码", align:'center'},
+			   {field:'locked',title:"是否锁定",templet:'<div>{{lockedTemplet[d.locked]}}</div>', align:'center'},
+			   {title:"操作",toolbar:'#toolbar', align:'center'}
+		  ]],		   
+	   });
+	   //根据检索条件重新渲染表格
+	   $("#userSearch").click(function(){
+		   tableObj.reload({
+			   where:{
+				   selType: 1,
+				   msg: "eran"
+			   },
+			   page:{
+				   curr: 1
+			   }
+		   });
+	   });
+	  //监听对表格行内数据的操作
+	  table.on('tool(userTable)',function(obj){
+		  var data = obj.data;
+		  var layEvent = obj.event;
+		  if(layEvent === "detail"){
+			  layer.msg("查看："+data.username);
+		  }else if(layEvent === "huifu"){
+			  layer.msg("恢复："+data.username);
+		  }
+	  }); 
+	  
+	});	
+</script>
+</body>
+</html>

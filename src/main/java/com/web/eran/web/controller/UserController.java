@@ -44,6 +44,11 @@ public class UserController {
 		return "user/userSearch";
 	}
 	
+	@RequestMapping(value="/deleted", method=RequestMethod.GET)
+	public String goUserDeleted() {
+		return "user/userDeleted";
+	}
+	
 	@RequestMapping(value="/select", method=RequestMethod.GET)
 	@ResponseBody
 	public Object userListSelect(int page, int limit) {

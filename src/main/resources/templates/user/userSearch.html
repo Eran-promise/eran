@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>layout 后台大布局 - Layui</title>
+  <title>用户查询</title>
   <link rel="stylesheet" th:href="@{/statics/layui/css/layui.css}">
   <link rel="stylesheet" th:href="@{/statics/css/common.css}">
   <style type="text/css">
@@ -59,6 +59,57 @@
   	</div>
     <!-- 引入尾部 -->
     <div th:replace="common/nav :: foot"></div>
+</div>
+<div id="userAdd" class="layui-fluid" style="margin-top: 15px;">
+	<form class="layui-form layui-form-pane" id="userAd" lay-filter="test1">
+		<div class="layui-form-item">
+			<label class="layui-form-label">用户名</label>
+			<div class="layui-input-block">
+				<input type="text" name="username" class="layui-input" lay-verify="username" autocomplete="off">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">操作员工号</label>
+			<div class="layui-input-block">
+				<input type="text" name="gonghao" class="layui-input" lay-verify="required" autocomplete="off">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">操作员姓名</label>
+			<div class="layui-input-block">
+				<input type="text" name="caoname" class="layui-input" lay-verify="required" autocomplete="off">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">操作员邮箱</label>
+			<div class="layui-input-block">
+				<input type="text" name="caomail" class="layui-input" lay-verify="email" autocomplete="off">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">手机号码</label>
+			<div class="layui-input-block">
+				<input type="text" name="mobile" class="layui-input" lay-verify="phone" autocomplete="off">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">部门</label>
+			<div class="layui-input-block">
+				<input type="text" name="bumen" class="layui-input" lay-verify="required" autocomplete="off">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">分配角色</label>
+			<div class="layui-input-block">
+				<select name="role" lay-verify="required">
+					<option value="">请选择角色</option>
+					<option value="0">系统管理员</option>
+					<option value="1">部门经理</option>
+				</select>
+			</div>
+		</div>
+		<button id="subBtn" class="layui-btn layui-hide" lay-submit lay-filter="usera">提交</button>
+	</form>
 </div>
 <!-- 引入公共js -->
 <div th:replace="common/nav :: com_js"></div>
@@ -124,10 +175,12 @@
 		  }
 	  });
 	  //监听表格头部工具条
+	  var userAddIndex;
 	  table.on('toolbar(userTable)',function(obj){
 		  var layEvent = obj.event;
 		  if(layEvent === "add"){
-			  layer.open({
+			  $('#userAd')[0].reset();
+			  userAddIndex = layer.open({
 				  type: 1,
 				  content: $('#userAdd'),
 				  area: '550px',
@@ -137,7 +190,7 @@
 				  maxmin: true,
 				  resize: false,
 				  yes: function(index, layero){
-					  
+					  $("#subBtn").click();
 				  },
 				  btn2: function(index, layero){
 					  
@@ -146,11 +199,20 @@
 			  });
 		  }
 	  });
-	  layer.ready(function(){
-		  layer.msg('很高兴一开场就见到你');
+	  //监控表单提交
+	  form.on('submit(usera)',function(data){
+		  layer.close(userAddIndex);
+		  layer.alert('添加成功！',{icon:1});
+		  return false;
+	  });
+	  //自定义验证规则
+	  form.verify({
+		  username:[
+			  /^[\S]{6,12}$/,
+			  '用户名必须6到12位，且不能出现空格！'
+		  ]
 	  });
 	});	
 </script>
-<div id="userAdd">ddddd</div>
 </body>
 </html>
