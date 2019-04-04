@@ -22,7 +22,7 @@ public class SysPermission{
 	private String percode; 
 	
 	//父结点id : parentid 	
-	private Long parentid; 
+	private String parentid; 
 	
 	//父结点id列表串 : parentids 	
 	private String parentids; 
@@ -124,7 +124,7 @@ public class SysPermission{
 	 * 
 	 * @return 
 	 */
-	public Long getParentid () {
+	public String getParentid () {
 		return parentid;
 	}
 	
@@ -133,7 +133,7 @@ public class SysPermission{
 	 * 
 	 * @return 
 	 */
-	public void setParentid (Long parentid) {
+	public void setParentid (String parentid) {
 		this.parentid = parentid;
 	}
 	/**

@@ -31,7 +31,7 @@
 							#{type,jdbcType=VARCHAR},						
 							#{url,jdbcType=VARCHAR},						
 							#{percode,jdbcType=VARCHAR},						
-							#{parentid,jdbcType=BIGINT},						
+							#{parentid,jdbcType=VARCHAR},						
 							#{parentids,jdbcType=VARCHAR},						
 							#{sortstring,jdbcType=VARCHAR},						
 							#{available,jdbcType=VARCHAR}						

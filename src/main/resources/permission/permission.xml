@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<permisssion root="">
+	<!-- 系统管理模块 -->
+	<nav name="系统管理" type="menu" url="/eran-admin/index" code="101">
+		<side name="系统管理" type="menu" code="10101">
+			<menu name="首页统计" type="menu" code="1010101" url="/eran-admin/index"></menu>
+		</side>
+	</nav>
+	<!-- 用户管理 -->
+	<nav name="用户管理" type="menu" url="/eran-admin/user/info" code="102">
+		<side name="操作员管理" type="menu" code="10201">
+			<menu name="基本信息 " type="menu" code="1020101" url="/eran-admin/user/info"></menu>
+			<menu name="修改密码 " type="menu" code="1020102" url="/eran-admin/user/passwordUpdate"></menu>
+		</side>
+		<side name="用户维护" type="menu" code="10202">
+			<menu name="用户查询" type="menu" code="1020201" url="/eran-admin/user/search">
+				<btn name="新增用户" type="btn" code="102020101"></btn>
+				<btn name="查看" type="btn" code="102020102"></btn>
+				<btn name="编辑" type="btn" code="102020103"></btn>
+				<btn name="删除" type="btn" code="102020104"></btn>
+				<btn name="审核" type="btn" code="102020105"></btn>
+			</menu>
+			<menu name="已删除用户 " type="menu" code="1020202" url="/eran-admin/user/deleted">
+				<btn name="查看" type="btn" code="102020201"></btn>
+				<btn name="恢复" type="btn" code="102020202"></btn>
+			</menu>
+		</side>
+	</nav>
+</permisssion>
