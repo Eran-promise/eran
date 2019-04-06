@@ -26,4 +26,29 @@
 			</menu>
 		</side>
 	</nav>
+	<!-- 权限管理模块 -->
+	<nav name="权限管理" type="menu" url="/eran-admin/power/weihu" code="103">
+		<side name="角色管理" type="menu" code="10301">
+			<menu name="角色维护" type="menu" code="1030101" url="/eran-admin/power/weihu"></menu>
+			<menu name="新增角色" type="menu" code="1030102" url="/eran-admin/power/"></menu>
+		</side>
+	</nav>
+	<!-- 系统管理模块 -->
+	<nav name="系统管理" type="menu" url="/eran-admin/index" code="101">
+		<side name="系统管理" type="menu" code="10101">
+			<menu name="首页统计" type="menu" code="1010101" url="/eran-admin/index"></menu>
+		</side>
+	</nav>
+	<!-- 系统管理模块 -->
+	<nav name="系统管理" type="menu" url="/eran-admin/index" code="101">
+		<side name="系统管理" type="menu" code="10101">
+			<menu name="首页统计" type="menu" code="1010101" url="/eran-admin/index"></menu>
+		</side>
+	</nav>
+	<!-- 系统管理模块 -->
+	<nav name="系统管理" type="menu" url="/eran-admin/index" code="101">
+		<side name="系统管理" type="menu" code="10101">
+			<menu name="首页统计" type="menu" code="1010101" url="/eran-admin/index"></menu>
+		</side>
+	</nav>
 </permisssion>
