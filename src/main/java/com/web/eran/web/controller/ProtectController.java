@@ -1,5 +1,6 @@
 package com.web.eran.web.controller;
 
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,7 @@ public class ProtectController {
 	private final static Logger log = LoggerFactory.getLogger(ProtectController.class);
 	
 	@RequestMapping(value="/search",method=RequestMethod.GET)
+	@RequiresPermissions("1070101")
 	public String userInfo() {
 		return "protect/protectSearch";
 	}

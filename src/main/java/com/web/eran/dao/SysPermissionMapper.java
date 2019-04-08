@@ -24,4 +24,8 @@ public interface SysPermissionMapper{
 	public List<SysPermission> findBySelective(Map<String, Object> map);
 	
 	public int findBySelectiveCount(Map<String, Object> map); 
+	
+	void insertByList(List<SysPermission> list);
+	
+	List<SysPermission> getPermissionListByRoleId(Long roleId);
 }

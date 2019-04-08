@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" 
+	xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -12,13 +13,13 @@
       <li class="layui-nav-item">
         	<a href="javascrpt:;"><i class="layui-icon layui-icon-shrink-right" style="font-size :16px;" id="LAY_app_flexible"></i></a>
       </li>
-      <li class="layui-nav-item 101"><a href="/eran-admin/index">系统管理</a></li>
-      <li class="layui-nav-item 102"><a href="/eran-admin/user/info">用户管理</a></li>
-      <li class="layui-nav-item 103"><a href="/eran-admin/power/weihu">权限管理</a></li>
-      <li class="layui-nav-item 104"><a href="/eran-admin/log/search">日志管理</a></li>
-      <li class="layui-nav-item 105"><a href="/eran-admin/website/search">网站管理</a></li>
-      <li class="layui-nav-item 106"><a href="/eran-admin/server/zonglan">服务器管理</a></li>
-      <li class="layui-nav-item 107"><a href="/eran-admin/protect/search">安全管理</a></li>
+      <li shiro:hasPermission="101" class="layui-nav-item 101"><a href="/eran-admin/index">系统管理</a></li>
+      <li shiro:hasPermission="102" class="layui-nav-item 102"><a href="/eran-admin/user/info">用户管理</a></li>
+      <li shiro:hasPermission="103" class="layui-nav-item 103"><a href="/eran-admin/power/weihu">权限管理</a></li>
+      <li shiro:hasPermission="104" class="layui-nav-item 104"><a href="/eran-admin/log/search">日志管理</a></li>
+      <li shiro:hasPermission="105" class="layui-nav-item 105"><a href="/eran-admin/website/search">网站管理</a></li>
+      <li shiro:hasPermission="106" class="layui-nav-item 106"><a href="/eran-admin/server/zonglan">服务器管理</a></li>
+      <li shiro:hasPermission="107" class="layui-nav-item 107"><a href="/eran-admin/protect/search">安全管理</a></li>
     </ul>
     <ul class="layui-nav layui-layout-right">
       <li class="layui-nav-item">

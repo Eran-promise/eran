@@ -2,6 +2,7 @@ package com.web.eran.web.controller;
 
 import java.io.IOException;
 
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,18 +24,11 @@ import com.web.eran.service.ISysUserService;
 public class HelloWorld {
 	
 	private final Logger log=LoggerFactory.getLogger(HelloWorld.class);
-	@Autowired
-	private ISysUserService sysUserService;
-	
-	@Autowired
-	private ObjectMapper mapper;
 
-	@RequestMapping("/hello")
-	@ResponseBody
-	public String hello() {
-		log.info("log test!");
-		log.info("开启热部署！");
-		return "hello world!";
+	@RequestMapping("/noPower")
+	public String noPower() {
+		System.out.println("shiro拦截");
+		return "common/403";
 	}
 	
 	
@@ -42,6 +36,6 @@ public class HelloWorld {
 	public String index() {
 		log.info("get in index.do");
 		return "index";
-	}	
+	}
 	
 }

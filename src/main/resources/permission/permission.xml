@@ -30,25 +30,42 @@
 	<nav name="权限管理" type="menu" url="/eran-admin/power/weihu" code="103">
 		<side name="角色管理" type="menu" code="10301">
 			<menu name="角色维护" type="menu" code="1030101" url="/eran-admin/power/weihu"></menu>
-			<menu name="新增角色" type="menu" code="1030102" url="/eran-admin/power/"></menu>
 		</side>
 	</nav>
-	<!-- 系统管理模块 -->
-	<nav name="系统管理" type="menu" url="/eran-admin/index" code="101">
-		<side name="系统管理" type="menu" code="10101">
-			<menu name="首页统计" type="menu" code="1010101" url="/eran-admin/index"></menu>
+	<!-- 日志管理模块 -->
+	<nav name="日志管理" type="menu" url="/eran-admin/log/search" code="104">
+		<side name="日志管理" type="menu" code="10401">
+			<menu name="操作日志" type="menu" code="1040101" url="/eran-admin/log/search"></menu>
 		</side>
 	</nav>
-	<!-- 系统管理模块 -->
-	<nav name="系统管理" type="menu" url="/eran-admin/index" code="101">
-		<side name="系统管理" type="menu" code="10101">
-			<menu name="首页统计" type="menu" code="1010101" url="/eran-admin/index"></menu>
+	<!-- 网站管理模块 -->
+	<nav name="网站管理" type="menu" url="/eran-admin/website/search" code="105">
+		<side name="网站管理" type="menu" code="10501">
+			<menu name="首页统计" type="menu" code="1050101" url="/eran-admin/website/search"></menu>
 		</side>
 	</nav>
-	<!-- 系统管理模块 -->
-	<nav name="系统管理" type="menu" url="/eran-admin/index" code="101">
-		<side name="系统管理" type="menu" code="10101">
-			<menu name="首页统计" type="menu" code="1010101" url="/eran-admin/index"></menu>
+	<!-- 服务器管理模块 -->
+	<nav name="服务器管理" type="menu" url="/eran-admin/server/zonglan" code="106">
+		<side name="服务器状态" type="menu" code="10601">
+			<menu name="首页统计" type="menu" code="1060101" url="/eran-admin/server/zonglan"></menu>
+		</side>
+		<side name="服务器管理" type="menu" code="10602">
+			<menu name="服务器查询" type="menu" code="1060201" url=""></menu>
+			<menu name="服务器新增" type="menu" code="1060202" url=""></menu>
+		</side>
+	</nav>
+	<!-- 安全管理模块 -->
+	<nav name="安全管理" type="menu" url="/eran-admin/protect/search" code="107">
+		<side name="防护组管理" type="menu" code="10701">
+			<menu name="防护组查询" type="menu" code="1070101" url="/eran-admin/protect/search"></menu>
+			<menu name="防护组新增" type="menu" code="1070102" url=""></menu>
+		</side>
+		<side name="安全篡改" type="menu" code="10702">
+			<menu name="篡改告警" type="menu" code="1070201" url=""></menu>
+			<menu name="篡改分析" type="menu" code="1070202" url=""></menu>
+		</side>
+		<side name="安全审计" type="menu" code="10703">
+			<menu name="文件审计" type="menu" code="1070301" url=""></menu>
 		</side>
 	</nav>
 </permisssion>

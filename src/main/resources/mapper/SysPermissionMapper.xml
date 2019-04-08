@@ -131,4 +131,42 @@
 	    		       <if test="available != null">and available = #{available}</if> 
 	    		</where>
 	</select>
+	
+	<insert id="insertByList" parameterType="java.util.List">
+		<selectKey resultType="Integer" keyProperty="id" order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		insert into sys_permission
+		(name, type, url, percode, parentid, parentids, sortstring, available) values
+		<foreach collection="list" item="temp" index="index" separator=",">
+			(
+			#{temp.name},
+			#{temp.type},
+			#{temp.url},
+			#{temp.percode},
+			#{temp.parentid},
+			#{temp.parentids},
+			#{temp.sortstring},
+			#{temp.available}
+			)
+		</foreach>
+	</insert>
+	
+	<select id="getPermissionListByRoleId" parameterType="Long" resultMap="sysPermission">
+		SELECT
+			 id as "id" ,			
+			 name as "name" ,			
+			 type as "type" ,			
+			 url as "url" ,			
+			 percode as "percode" ,			
+			 parentid as "parentid" ,			
+			 parentids as "parentids" ,			
+			 sortstring as "sortstring" ,			
+			 available as "available" 			
+		FROM  sys_permission per
+		RIGHT JOIN 
+		(select sys_permission_id from sys_role_permission where sys_role_id = #{roleId}) as temp
+		ON temp.sys_permission_id = per.id
+		WHERE per.available=1
+	</select>
 </mapper>

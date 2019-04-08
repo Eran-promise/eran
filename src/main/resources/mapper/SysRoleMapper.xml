@@ -77,4 +77,16 @@
 	    		       <if test="available != null">and available = #{available}</if> 
 	    		</where>
 	</select>
+	
+	<select id="getRoleListByUserId" parameterType="Long" resultMap="sysRole">
+		SELECT
+				 id as "id" ,			
+				 name as "name" ,			
+				 available as "available" 			
+		FROM  sys_role as role
+		RIGHT JOIN 
+		(select sys_role_id from sys_user_role where sys_user_id = #{userId}) as temp
+		ON role.id = temp.sys_role_id
+		WHERE role.available=1
+	</select>
 </mapper>

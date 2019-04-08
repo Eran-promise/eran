@@ -23,5 +23,7 @@ public interface SysRoleMapper{
 	 
 	public List<SysRole> findBySelective(Map<String, Object> map);
 	
-	public int findBySelectiveCount(Map<String, Object> map); 
+	public int findBySelectiveCount(Map<String, Object> map);
+	
+	List<SysRole> getRoleListByUserId(Long userId);
 }

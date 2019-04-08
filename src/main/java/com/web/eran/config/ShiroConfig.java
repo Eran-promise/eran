@@ -6,6 +6,8 @@ import java.util.Map;
 
 import javax.servlet.Filter;
 
+import org.apache.shiro.codec.Base64;
+import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.CookieRememberMeManager;
@@ -19,10 +21,8 @@ import org.springframework.context.annotation.Configuration;
 
 import com.web.eran.shiro.MyFormAuthenticationFilter;
 import com.web.eran.shiro.MyShiroRealm;
-import com.web.eran.shiro.MyUsernamePasswordToken;
 
-import org.apache.shiro.codec.Base64;
-import org.apache.shiro.mgt.SecurityManager;
+import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
 
 /**
 * @author Promise
@@ -62,7 +62,7 @@ public class ShiroConfig {
         shiroFilterFactoryBean.setSuccessUrl("/index");
 
         //未授权界面;
-        shiroFilterFactoryBean.setUnauthorizedUrl("/403");
+        shiroFilterFactoryBean.setUnauthorizedUrl("/noPower");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         //注册自定义的拦截器
         shiroFilterFactoryBean.setFilters(map);
@@ -78,7 +78,12 @@ public class ShiroConfig {
         MyShiroRealm myShiroRealm = new MyShiroRealm();
         return myShiroRealm;
     }
-
+    
+    //用于thymeleaf模板使用shiro标签
+    @Bean
+    public ShiroDialect shiroDialect() {
+        return new ShiroDialect();
+    }
 
     @Bean
     public SecurityManager securityManager(){

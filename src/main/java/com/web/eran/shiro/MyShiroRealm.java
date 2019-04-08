@@ -1,5 +1,7 @@
 package com.web.eran.shiro;
 
+import java.util.List;
+
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
@@ -13,12 +15,14 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import com.web.eran.entity.SysPermission;
 import com.web.eran.entity.SysRole;
 import com.web.eran.entity.SysUser;
+import com.web.eran.service.ISysPermissionService;
 import com.web.eran.service.ISysUserService;
 
-import javax.annotation.Resource;
 
 /**
  * @author Promise
@@ -29,19 +33,26 @@ public class MyShiroRealm extends AuthorizingRealm {
 	
 	private final Logger log = LoggerFactory.getLogger(MyShiroRealm.class);
 	
-    @Resource
+	@Autowired
     private ISysUserService SysUserService;
+	
+    @Autowired
+    private ISysPermissionService permissionService;
+    
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         log.info("权限配置-->MyShiroRealm.doGetAuthorizationInfo()");
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
-//        SysUser SysUser  = (SysUser)principals.getPrimaryPrincipal();
-//        for(SysRole role:SysUser.getRoleList()){
-//            authorizationInfo.addRole(role.getRole());
-//            for(SysPermission p:role.getPermissions()){
-//                authorizationInfo.addStringPermission(p.getPermission());
-//            }
-//        }
+        SysUser sysUser  = (SysUser)principals.getPrimaryPrincipal();
+        //根据用户id查询出该用户的角色集合
+        List<SysRole> roleList = permissionService.getRoleListByUserId(sysUser.getId());
+        for(SysRole role:roleList) {
+        	authorizationInfo.addRole(role.getName());
+        	List<SysPermission> permissionList = permissionService.getPermissionListByRoleId(role.getId());
+        	for(SysPermission permission:permissionList) {
+        		authorizationInfo.addStringPermission(permission.getPercode());
+        	}
+        }
         return authorizationInfo;
     }
 
@@ -68,7 +79,7 @@ public class MyShiroRealm extends AuthorizingRealm {
             return null;
         }
         SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
-                username, //用户名
+        		SysUser, //用户名
                 SysUser.getPassword(), //密码
 //                ByteSource.Util.bytes(SysUser.getSalt()),
                 this.getName()  //realm name
