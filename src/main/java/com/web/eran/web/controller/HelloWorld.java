@@ -1,19 +1,14 @@
 package com.web.eran.web.controller;
 
-import java.io.IOException;
-
-import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.web.eran.entity.SysUser;
-import com.web.eran.service.ISysUserService;
+import com.web.eran.shiro.MyShiroRealm;
 
 /**
 * @author Promise
@@ -29,6 +24,16 @@ public class HelloWorld {
 	public String noPower() {
 		System.out.println("shiro拦截");
 		return "common/403";
+	}
+	
+	@RequestMapping(value="/clear")
+	@ResponseBody
+	public String clearShouquanCache() {
+		DefaultWebSecurityManager securityManager = (DefaultWebSecurityManager)SecurityUtils.getSecurityManager();
+        MyShiroRealm shiroRealm = (MyShiroRealm) securityManager.getRealms().iterator().next();
+        //清除权限 相关的缓存
+        shiroRealm.clearCachedAuthorizationInfo(SecurityUtils.getSubject().getPrincipals());
+        return "ok";
 	}
 	
 	

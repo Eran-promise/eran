@@ -31,13 +31,13 @@ public class SysUserServiceImpl implements ISysUserService{
 	private static final String CACHE_NAME = "userCache";
 
 	@Override
-	@Cacheable(value=CACHE_NAME,key="'user1'")
+//	@Cacheable(value=CACHE_NAME,key="#p0")
 	public SysUser findByUsername(String userName) {
 		return sysUserMapper.getUserByName(userName);
 	}
 
 	@Override
-	@CacheEvict(value=CACHE_NAME,key="'user1'")
+//	@CacheEvict(value=CACHE_NAME,key="#p0.username")
 	public int update(SysUser entity) {
 		// TODO Auto-generated method stub
 		return sysUserMapper.update(entity);

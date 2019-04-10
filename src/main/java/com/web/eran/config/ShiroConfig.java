@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.servlet.Filter;
 
+import org.apache.shiro.cache.ehcache.EhCacheManager;
 import org.apache.shiro.codec.Base64;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
@@ -18,6 +19,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.util.ObjectUtils;
 
 import com.web.eran.shiro.MyFormAuthenticationFilter;
 import com.web.eran.shiro.MyShiroRealm;
@@ -76,6 +78,16 @@ public class ShiroConfig {
     @Bean
     public MyShiroRealm myShiroRealm(){
         MyShiroRealm myShiroRealm = new MyShiroRealm();
+        //开启缓存
+        myShiroRealm.setCachingEnabled(true);
+        //开启认证缓存
+        myShiroRealm.setAuthenticationCachingEnabled(true);
+        //设置认证缓存区间
+        myShiroRealm.setAuthenticationCacheName("shiroAuthentication");
+        //开启授权缓存
+        myShiroRealm.setAuthorizationCachingEnabled(true);
+        //设置授权缓存区间
+        myShiroRealm.setAuthorizationCacheName("shiroAuthorization");
         return myShiroRealm;
     }
     
@@ -92,8 +104,28 @@ public class ShiroConfig {
         securityManager.setRealm(myShiroRealm());
         //注入记住我管理器
         securityManager.setRememberMeManager(rememberMeMannger());
+        //注入缓存管理
+        securityManager.setCacheManager(ehCacheManager());
         return securityManager;
     }
+    
+    /**
+     * shiro缓存管理器;
+     * @return
+     */
+    @Bean
+    public EhCacheManager ehCacheManager(){    	
+    	net.sf.ehcache.CacheManager cacheManager = net.sf.ehcache.CacheManager.getCacheManager("em");
+    	EhCacheManager em = new EhCacheManager();
+    	if(ObjectUtils.isEmpty(cacheManager)) {
+    	    em.setCacheManagerConfigFile("classpath:ehcache-shiro.xml");
+    	}else {
+    		em.setCacheManager(cacheManager);
+    	}
+    	
+        return em;
+    }
+    
     
     /**
 	 *  开启shiro aop注解支持.
