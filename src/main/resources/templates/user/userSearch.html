@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" 
+	xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -115,14 +116,14 @@
 <div th:replace="common/nav :: com_js"></div>
 <!-- 表格行内工具栏模板 -->
 <script type="text/html" id="toolbar">
-  <a class="layui-btn layui-btn-xs" lay-event="detail">查看</a>
-  <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
-  <a class="layui-btn layui-btn-xs" lay-event="check">审核</a>
+  <a shiro:hasPermission="102020102" class="layui-btn layui-btn-xs" lay-event="detail">查看</a>
+  <a shiro:hasPermission="102020103" class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+  <a shiro:hasPermission="102020104" class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+  <a shiro:hasPermission="102020105" class="layui-btn layui-btn-xs" lay-event="check">审核</a>
 </script>
 <!-- 表头工具模板 -->
 <script type="text/html" id="headtool">
-  <button class='layui-btn' type='button' lay-event='add'><i class='layui-icon layui-icon-add-circle'></i>新增用户</button>
+  <button shiro:hasPermission="102020101" class='layui-btn' type='button' lay-event='add'><i class='layui-icon layui-icon-add-circle'></i>新增用户</button>
 </script>
 <script type="text/javascript" th:inline="none">
 	showSideAndNav("10203");

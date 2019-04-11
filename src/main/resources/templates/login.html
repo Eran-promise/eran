@@ -31,6 +31,12 @@
 					<img alt="vercode" onclick = "this.src='/eran-admin/kaptcha'" src="/eran-admin/kaptcha" title="点击更换验证码" />
 				</div>
 			</div>
+			<div class="layui-form-item">
+			    <label class="layui-form-label">Remember</label>
+			    <div class="layui-input-block">
+			      <input type="checkbox" name="rememberMe" lay-skin="switch">
+			    </div>
+			 </div>
 			<div class="layui-form-item" th:text="${msg}" style="text-align: center;color: #FF5722;"></div>
 			<div class="layui-form-item">
 				<input type="submit" value="SIGN IN" class="layui-btn layui-btn-fluid" lay-submit lay-filter="loginf"/>

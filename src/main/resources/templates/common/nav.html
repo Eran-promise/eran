@@ -41,27 +41,27 @@
     <div class="layui-side-scroll">
     	<!-- 系统管理侧栏菜单 -->
       <ul class="layui-nav layui-nav-tree 101" lay-shrink="all">
-        <li class="layui-nav-item">
+        <li shiro:hasPermission="10101" class="layui-nav-item">
           <a class="" href="javascript:;"><i class="layui-icon layui-icon-set"></i>&nbsp;<span>系统管理</span></a>
           <dl class="layui-nav-child">
-            <dd class="10101"><a href="/eran-admin/index">首页统计</a></dd>
+            <dd shiro:hasPermission="1010101" class="10101"><a href="/eran-admin/index">首页统计</a></dd>
           </dl>
         </li>        
       </ul>
       <!-- 用户管理侧栏菜单 -->
       <ul class="layui-nav layui-nav-tree layui-hide 102" lay-shrink="all">
-        <li class="layui-nav-item">
+        <li shiro:hasPermission="10201" class="layui-nav-item">
           <a class="" href="javascript:;"><i class="layui-icon layui-icon-set"></i>&nbsp;<span>操作员管理</span></a>
           <dl class="layui-nav-child">
-            <dd class="10201"><a href="/eran-admin/user/info">基本信息</a></dd>
-            <dd class="10202"><a href="/eran-admin/user/passwordUpdate">修改密码</a></dd>
+            <dd shiro:hasPermission="1020101" class="10201"><a href="/eran-admin/user/info">基本信息</a></dd>
+            <dd shiro:hasPermission="1020102" class="10202"><a href="/eran-admin/user/passwordUpdate">修改密码</a></dd>
           </dl>
         </li>
-        <li class="layui-nav-item layui-nav-tree">
+        <li shiro:hasPermission="10202" class="layui-nav-item layui-nav-tree">
           <a class="" href="javascript:;"><i class="layui-icon layui-icon-template-1"></i>&nbsp;<span>用户管理</span></a>
           <dl class="layui-nav-child">
-            <dd class="10203"><a href="/eran-admin/user/search">用户查询</a></dd>
-            <dd class="10204"><a href="/eran-admin/user/deleted">已删除用户</a></dd>
+            <dd shiro:hasPermission="1020201" class="10203"><a href="/eran-admin/user/search">用户查询</a></dd>
+            <dd shiro:hasPermission="1020202" class="10204"><a href="/eran-admin/user/deleted">已删除用户</a></dd>
           </dl>
         </li>        
       </ul>
